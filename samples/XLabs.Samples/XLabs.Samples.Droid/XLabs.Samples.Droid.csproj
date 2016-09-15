@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -162,6 +162,14 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\blackbackground.png" />
+    <AndroidResource Include="Resources\drawable\pie27_32.png" />
+    <AndroidResource Include="Resources\drawable\pie30_32.png" />
+    <AndroidResource Include="Resources\drawable\services1_32.png" />
+    <AndroidResource Include="Resources\drawable\settings20.png" />
+    <AndroidResource Include="Resources\drawable\settings20_32.png" />
+    <AndroidResource Include="Resources\drawable\ToolbarGradient1.png" />
+    <AndroidResource Include="Resources\drawable\ToolbarGradient2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
