@@ -132,9 +132,11 @@ namespace XLabs.Forms.Controls
 
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            ExtendedPicker bindablePicker = (ExtendedPicker) bindable;
-            ExtendedPicker picker = bindable as ExtendedPicker;
-            if (picker != null)
+            var picker = bindable as ExtendedPicker;
+            if (picker == null)
+                return;
+
+            if (picker.SelectedIndex >= 0)
             {
                 var selectedItem = picker.ItemsSource[picker.SelectedIndex];
                 if (!string.IsNullOrWhiteSpace(picker.KeyMemberPath))
@@ -152,14 +154,15 @@ namespace XLabs.Forms.Controls
                     picker.SelectedItem = selectedItem.ToString();
                 }
             }
-            if (bindablePicker.ItemsSource != null && bindablePicker.SelectedItem != null)
+
+            if (picker.ItemsSource != null && picker.SelectedItem != null)
             {
                 int count = 0;
-                foreach (object obj in bindablePicker.ItemsSource)
+                foreach (object obj in picker.ItemsSource)
                 {
-                    if (obj == bindablePicker.SelectedItem)
+                    if (obj.Equals(picker.SelectedItem))
                     {
-                        bindablePicker.SelectedIndex = count;
+                        picker.SelectedIndex = count;
                         break;
                     }
                     count++;
