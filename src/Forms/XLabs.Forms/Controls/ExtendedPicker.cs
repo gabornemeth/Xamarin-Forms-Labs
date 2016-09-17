@@ -126,9 +126,33 @@ namespace XLabs.Forms.Controls
 
         private void OnSelectedIndexChanged(object sender,EventArgs e)
         {
-            this.SelectedItem = ItemsSource [SelectedIndex];
+            if (SelectedIndex < 0)
+                SelectedItem = null;
+            else
+            {
+                SelectedItem = GetValueForItem(ItemsSource[SelectedIndex]);
+            }
         }
 
+        /// <summary>
+        /// Gets the value for an item
+        /// </summary>
+        /// <returns>The value for item.</returns>
+        /// <param name="item">One of the picker's items.</param>
+        private object GetValueForItem(object item)
+        {
+            if (!string.IsNullOrWhiteSpace(KeyMemberPath))
+            {
+                var keyProperty = item.GetType().GetRuntimeProperty(KeyMemberPath);
+                if (keyProperty == null)
+                {
+                    throw new InvalidOperationException(string.Concat(KeyMemberPath, " is not a property of ", item.GetType().FullName));
+                }
+                return keyProperty.GetValue(item);
+            }
+
+            return item;
+        }
 
         private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -136,91 +160,78 @@ namespace XLabs.Forms.Controls
             if (picker == null)
                 return;
 
-            if (picker.SelectedIndex >= 0)
+            if (picker.ItemsSource != null && newValue != null)
             {
-                var selectedItem = picker.ItemsSource[picker.SelectedIndex];
-                if (!string.IsNullOrWhiteSpace(picker.KeyMemberPath))
+                // keep SelectedIndex in sync
+                int index = 0;
+                foreach (object item in picker.ItemsSource)
                 {
-                    var keyProperty = selectedItem.GetType().GetRuntimeProperty(picker.KeyMemberPath);
-                    if (keyProperty == null)
+                    var valueOfItem = picker.GetValueForItem(item);
+                    if (valueOfItem.Equals(newValue))
                     {
-                        throw new InvalidOperationException(String.Concat(picker.KeyMemberPath, " is not a property of ",
-                            selectedItem.GetType().FullName));
-                    }
-                    picker.SelectedItem = keyProperty.GetValue(selectedItem);
-                }
-                else
-                {
-                    picker.SelectedItem = selectedItem.ToString();
-                }
-            }
-
-            if (picker.ItemsSource != null && picker.SelectedItem != null)
-            {
-                int count = 0;
-                foreach (object obj in picker.ItemsSource)
-                {
-                    if (obj.Equals(picker.SelectedItem))
-                    {
-                        picker.SelectedIndex = count;
+                        picker.SelectedIndex = index;
                         break;
                     }
-                    count++;
+                    index++;
                 }
             }
         }
 
         private static void OnDisplayPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-
-            ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
-            bindablePicker.DisplayProperty = (string)newValue;
+            var picker = bindable as ExtendedPicker;
+            picker.DisplayProperty = (string)newValue;
             loadItemsAndSetSelected (bindable);
 
         }
 
         private static void OnKeyMemberPathChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            ExtendedPicker picker = bindable as ExtendedPicker;
+            var picker = bindable as ExtendedPicker;
             picker.KeyMemberPath = newValue?.ToString();
         }
 
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
-            bindablePicker.ItemsSource = (IList)newValue;
+            var picker = bindable as ExtendedPicker;
+            picker.ItemsSource = (IList)newValue;
             loadItemsAndSetSelected (bindable);
         }
         static void loadItemsAndSetSelected (BindableObject bindable)
         {
-            ExtendedPicker bindablePicker = (ExtendedPicker)bindable;
-            if (bindablePicker.ItemsSource as IEnumerable != null) {
+            var picker = bindable as ExtendedPicker;
+            if (picker.ItemsSource as IEnumerable != null)
+            {
                 PropertyInfo propertyInfo = null;
-                int count = 0;
-                foreach (object obj in (IEnumerable)bindablePicker.ItemsSource) {
+                int index = 0;
+                foreach (object obj in (IEnumerable)picker.ItemsSource)
+                {
                     string value = string.Empty;
-                    if (bindablePicker.DisplayProperty != null) {
-                        if (propertyInfo == null) {
-                            propertyInfo = obj.GetType ().GetRuntimeProperty (bindablePicker.DisplayProperty);
+                    if (picker.DisplayProperty != null)
+                    {
+                        if (propertyInfo == null)
+                        {
+                            propertyInfo = obj.GetType ().GetRuntimeProperty (picker.DisplayProperty);
                             if (propertyInfo == null)
-                                throw new Exception (String.Concat (bindablePicker.DisplayProperty, " is not a property of ", obj.GetType ().FullName));
+                                throw new Exception (String.Concat (picker.DisplayProperty, " is not a property of ", obj.GetType ().FullName));
                         }
                         value = propertyInfo.GetValue (obj).ToString();
                     }
-                    else {
+                    else
+                    {
                         value = obj.ToString();
                     }
-                    bindablePicker.Items.Add (value);
-                    if (bindablePicker.SelectedItem != null) {
-                        if (bindablePicker.SelectedItem == obj) {
-                            bindablePicker.SelectedIndex = count;
+                    picker.Items.Add (value);
+                    if (picker.SelectedItem != null)
+                    {
+                        if (picker.SelectedItem == obj)
+                        {
+                            picker.SelectedIndex = index;
                         }
                     }
-                    count++;
+                    index++;
                 }
             }
         }
     }
-
 }
-
