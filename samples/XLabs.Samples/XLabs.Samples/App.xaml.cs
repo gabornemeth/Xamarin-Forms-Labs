@@ -246,6 +246,7 @@ namespace XLabs.Samples
                 {"DragPage", typeof(DragPage)},
                 {"ExtendedButton", typeof(ExtendedButtonPage)},
                 {"ExtendedCell", typeof(ExtendedCellPage)},
+                {"ExtendedDatePicker", typeof(ExtendedDatePickerPage)},
                 {"ExtendedEntry", typeof(ExtendedEntryPage)},
                 {"ExtendedLabel", typeof(ExtendedLabelPage)},
                 {"ExtendedPicker", typeof(ExtendedPickerPage)},
@@ -393,17 +394,11 @@ namespace XLabs.Samples
         {
             // Get all the constructors of the page type.
             var constructors = pageType.GetTypeInfo().DeclaredConstructors;
-
-            foreach (
-                var page in
-                    from constructor in constructors
-                    where constructor.GetParameters().Length == 0
-                    select (Page)constructor.Invoke(null))
-            {
-                await parentPage.Navigation.PushAsync(page);
-
-                break;
-            }
+            var constructor = constructors.FirstOrDefault(c => c.GetParameters().Length == 0 && c.IsStatic == false);
+            if (constructor == null)
+                throw new NotSupportedException(pageType + "cannot be instantiated by default constructor.");
+            var page = constructor.Invoke(null) as Page;
+            await parentPage.Navigation.PushAsync(page);
         }
     }
 }

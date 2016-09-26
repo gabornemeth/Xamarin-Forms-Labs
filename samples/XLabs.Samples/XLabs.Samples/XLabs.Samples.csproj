@@ -96,6 +96,9 @@
     <Compile Include="Pages\Controls\ExtendedCellPage.xaml.cs">
       <DependentUpon>ExtendedCellPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Controls\ExtendedDatePickerPage.xaml.cs">
+      <DependentUpon>ExtendedDatePickerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Controls\ExtendedEntryPage.xaml.cs">
       <DependentUpon>ExtendedEntryPage.xaml</DependentUpon>
     </Compile>
@@ -392,6 +395,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Services\WaveRecorderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedDatePickerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

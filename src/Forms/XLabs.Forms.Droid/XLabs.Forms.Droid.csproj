@@ -116,6 +116,7 @@
     <Compile Include="Controls\DragContentView\DragContentViewRenderer.cs" />
     <Compile Include="Controls\DynamicListView\DynamicListViewRenderer.cs" />
     <Compile Include="Controls\ExtendedButton\ExtendedButtonRenderer.cs" />
+    <Compile Include="Controls\ExtendedDatePicker\ExtendedDatePickerRenderer.cs" />
     <Compile Include="Controls\ExtendedEditor\ExtendedEditorRenderer.cs" />
     <Compile Include="Controls\ExtendedEntryCell\ExtendedEntryCellRenderer.cs" />
     <Compile Include="Controls\ExtendedEntry\ExtendedEntryRenderer.cs" />
