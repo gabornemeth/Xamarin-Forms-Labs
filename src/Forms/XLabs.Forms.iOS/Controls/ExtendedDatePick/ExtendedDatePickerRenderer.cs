@@ -189,8 +189,16 @@ namespace XLabs.Forms.Controls
 		/// <param name="animate">if set to <c>true</c> [animate].</param>
 		private void UpdateDateFromModel (bool animate)
 		{
-			_picker.SetDate (Element.Date.ToNSDate (), animate);
-			Control.Text = Element.Date.ToString (Element.Format);
+            if (Element.Date.HasValue)
+            {
+                var date = Element.Date.Value;
+                _picker.SetDate(date.ToNSDate(), animate);
+                Control.Text = date.ToString(Element.Format);
+            }
+            else
+            {
+                Control.Text = Element.NullText;
+            }
 		}
 
 		/// <summary>
