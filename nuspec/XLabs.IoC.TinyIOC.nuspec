@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC.TinyIOC</id>
-    <version>2.3.0-pre05</version>
+    <version>2.3.2-pre02</version>
     <title>XLabs - IoC - TinyIOC</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,7 +17,7 @@
     <tags>Xamarin XLabs IOC TinyIOC</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.IoC" version="2.3.0-pre05" />
+        <dependency id="XLabs.IoC" version="2.3.2-pre02" />
       </group>
     </dependencies>
   </metadata>
