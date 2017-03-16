@@ -152,24 +152,6 @@
     <Compile Include="Validation\Validators.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
-      <Project>{486ABBD5-9E4D-4BD2-A6FB-82E0E3B5A163}</Project>
-      <Name>XLabs.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IOC\XLabs.IOC\XLabs.IOC.csproj">
-      <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
-      <Name>XLabs.IOC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Platform\XLabs.Platform\XLabs.Platform.csproj">
-      <Project>{7B43B9F5-7C88-42F1-B217-34A24AE925D0}</Project>
-      <Name>XLabs.Platform</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
-      <Project>{6C5C17D3-E6E8-4201-B11F-7C50B02E8E3D}</Project>
-      <Name>XLabs.Serialization</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

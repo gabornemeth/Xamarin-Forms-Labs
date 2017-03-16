@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="XLabs.Samples.Pages.Controls.ExtendedCellPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             Title="Extended Cells"
+             BackgroundColor="Gray">
+    <ContentPage.Content>
+        <StackLayout x:Name="StkRoot" Padding="10,0,10,0">
+            <controls:ExtendedLabel FontNameAndroid="fonts/Roboto-Light.ttf"
+                                    FontNameIOS="Roboto-Light"
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="This sample shows how to show/hide the separator and set it's padding and color, also Cell BackgroundColor and show discloursure on IOS"
+                                    VerticalOptions="Center" />
+
+            <ListView ItemsSource="{Binding Images}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ExtendedViewCell BackgroundColor="Red"
+                                                   SeparatorColor="Blue"
+                                                   SeparatorPadding="0,0,0,0"
+                                                   ShowDisclousure="True">
+                            <controls:ExtendedViewCell.View>
+                                <Grid HeightRequest="100"
+                                      HorizontalOptions="FillAndExpand"
+                                      Padding="10,5,5,5"
+                                      VerticalOptions="FillAndExpand">
+                                    <controls:ExtendedLabel FontNameAndroid="fonts/Roboto-Light.ttf"
+                                                            FontNameIOS="Roboto-Light"
+                                                            FontSize="22"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Text="{Binding FirstName}"
+                                                            VerticalOptions="Center" />
+                                </Grid>
+                            </controls:ExtendedViewCell.View>
+                        </controls:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView ItemsSource="{Binding Images}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ExtendedEntryCell IsPassword="True" Text="{Binding}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

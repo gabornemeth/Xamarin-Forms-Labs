@@ -114,6 +114,9 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
+    <Compile Include="..\AssemblyInfo.Serialization.cs">
+      <Link>Properties\AssemblyInfo.Serialization.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XLabs.Serialization\XLabs.Serialization.csproj">

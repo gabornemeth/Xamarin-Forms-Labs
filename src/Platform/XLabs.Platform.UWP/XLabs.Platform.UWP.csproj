@@ -117,6 +117,9 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
+    <Compile Include="..\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
     <Compile Include="Services\Email\EmailService.cs" />
     <Compile Include="Services\Geolocation\CoordinateExtensions.cs" />
     <Compile Include="Services\Geolocation\Geolocator.cs" />
@@ -132,14 +135,6 @@
     <EmbeddedResource Include="Properties\XLabs.Platform.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
-      <Project>{486ABBD5-9E4D-4BD2-A6FB-82E0E3B5A163}</Project>
-      <Name>XLabs.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IOC\XLabs.IOC\XLabs.IOC.csproj">
-      <Project>{88F99257-B7A1-4C67-B134-7BDAD63AEEF1}</Project>
-      <Name>XLabs.IOC</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>

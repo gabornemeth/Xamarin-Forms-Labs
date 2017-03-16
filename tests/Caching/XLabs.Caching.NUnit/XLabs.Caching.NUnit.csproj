@@ -39,6 +39,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="XLabs.Serialization, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\src\packages\XLabs.Serialization.2.3.2-pre04\lib\NETStandard1.0\XLabs.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Serialization.Net45, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\src\packages\XLabs.Serialization.Net45.2.3.2-pre04\lib\net45\XLabs.Serialization.Net45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,14 +60,6 @@
       <Project>{da63bb22-3a83-4bdd-ac19-00904877f4fa}</Project>
       <Name>XLabs.Caching</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
-      <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
-      <Name>XLabs.Serialization.Json.NET</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
-      <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
-      <Name>XLabs.Serialization</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -68,6 +68,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="..\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\XLabs.Caching.Sqlite.NUnit.Shared\XLabs.Caching.Sqlite.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

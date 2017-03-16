@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<toolkit:BaseView x:Class="XLabs.Samples.Pages.Mvvm.CanvasWebHybrid"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+                  xmlns:toolkit="clr-namespace:XLabs.Forms.Mvvm;assembly=XLabs.Forms"
+                  Title="CanvasJS hybrid view">
+    <toolkit:BaseView.Content>
+        <RelativeLayout x:Name="Container">
+            <RelativeLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                            Android="10, 0, 0, 0"
+                            WinPhone="0, 20, 0, 0"
+                            iOS="0, 20, 0, 0" />
+            </RelativeLayout.Padding>
+            <Label Text="{Binding Title}" />
+            <ListView x:Name="NativeList"
+                      ItemsSource="{Binding DataPoints}"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                             Property=Height,
+                                                                             Factor=.4}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                            Property=Width,
+                                                                            Factor=1}"
+                      RelativeLayout.XConstraint="{ConstraintExpression Type=Constant,
+                                                                        Constant=0}"
+                      RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,
+                                                                        Constant=20}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Label Text="{Binding Label}" />
+                                    <Slider Value="{Binding Y, Mode=TwoWay}" />
+                                    <!--							<Slider Maximum="{Binding Max}"></Slider>-->
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <controls:HybridWebView x:Name="hybridWebView"
+                                    BackgroundColor="White"
+                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                                           Property=Height,
+                                                                                           Factor=.5}"
+                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                                          Property=Width,
+                                                                                          Factor=1}"
+                                    RelativeLayout.XConstraint="{ConstraintExpression Type=Constant,
+                                                                                      Constant=0}"
+                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                                      Property=Height,
+                                                                                      Factor=.5}" />
+        </RelativeLayout>
+    </toolkit:BaseView.Content>
+</toolkit:BaseView>
+

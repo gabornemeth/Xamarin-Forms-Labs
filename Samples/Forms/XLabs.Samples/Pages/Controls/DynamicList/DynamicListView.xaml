@@ -1,0 +1,17 @@
+﻿<toolkit:BaseView x:Class="XLabs.Samples.Pages.Controls.DynamicList.DynamicListView"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:controls="clr-namespace:XLabs.Samples.Pages.Controls.DynamicList;assembly=XLabs.Samples"
+                  xmlns:toolkit="clr-namespace:XLabs.Forms.Mvvm;assembly=XLabs.Forms"
+                  Title="Dynamic List View">
+    <toolkit:BaseView.Content>
+        <StackLayout x:Name="Container" Padding="0,40,0,0">
+            <Button x:Name="Button" Text="Add new string" />
+            <Button x:Name="ButtonDate" Text="Add current time" />
+            <Label Text="Click on item to remove it" />
+            <controls:BasicList x:Name="DynamicList"
+                                HeightRequest="325"
+                                WidthRequest="200" />
+        </StackLayout>
+    </toolkit:BaseView.Content>
+</toolkit:BaseView>

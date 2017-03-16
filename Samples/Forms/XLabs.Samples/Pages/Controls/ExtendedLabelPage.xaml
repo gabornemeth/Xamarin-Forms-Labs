@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage x:Class="XLabs.Samples.Pages.Controls.ExtendedLabelPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             Title="Labels">
+    <ContentPage.Content>
+        <!--
+            Removed scrollview as this makes the Windows Phone not render the font substitutions. This is bug reported to the Xamarin team.
+            Works on other platforms. !
+        -->
+        <ScrollView>
+            <StackLayout x:Name="stkRoot" Padding="0,40,0,0">
+                <controls:ExtendedLabel HorizontalOptions="StartAndExpand" Text="Plain unspecified Extended Label" />
+                <controls:ExtendedLabel HorizontalOptions="StartAndExpand"
+                                        IsStrikeThrough="True"
+                                        Text="Text with strikethrough - no font or size size specified" />
+                <controls:ExtendedLabel FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        IsStrikeThrough="True"
+                                        Text="Text with strikethrough size 14" />
+                <controls:ExtendedLabel FontSize="20"
+                                        HorizontalOptions="StartAndExpand"
+                                        IsStrikeThrough="True"
+                                        Text="Text with strikethrough 20" />
+                <controls:ExtendedLabel FontName="Open 24 Display St"
+                                        FontSize="20"
+                                        FriendlyFontName="Open 24 Display St"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="This uses 'FontName' = 'Open 24 Display St' set in XAML and 'FriendlyFontName' properties, size 20" />
+                <controls:ExtendedLabel FontName="Open 24 Display St"
+                                        FontSize="20"
+                                        FriendlyFontName="Open 24 Display St"
+                                        HorizontalOptions="StartAndExpand"
+                                        IsStrikeThrough="True"
+                                        Text="As above, but now with Strikethrough" />
+                <controls:ExtendedLabel FontName="Open 24 Display St"
+                                        FontSize="14"
+                                        FriendlyFontName="Open 24 Display St"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="This uses 'FontName' = 'Open 24 Display St.ttf'. Size 14" />
+                <controls:ExtendedLabel BackgroundColor="Yellow"
+                                        FontName="Open 24 Display St"
+                                        FontSize="14"
+                                        FriendlyFontName="Open 24 Display St"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="This uses yellow background (Android extension)" />
+                <controls:ExtendedLabel Font="Medium"
+                                        FontName="Open 24 Display St"
+                                        FriendlyFontName="Open 24 Display St"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="This uses 'FontName' = 'Open 24 Display St.ttf'. Size is Xamarin Medium" />
+                <controls:ExtendedLabel Font="Large"
+                                        FontName="Open 24 Display St"
+                                        FriendlyFontName="Open 24 Display St"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="This uses 'FontName' = 'Open 24 Display St.ttf'. Size is Xamarin Large" />
+                <controls:ExtendedLabel FontName="CODE2000"
+                                        FontSize="14"
+                                        FriendlyFontName="Code2000"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="This 'FontName' = 'CODE2000', but font does NOT exist, so should default to the system font." />
+                <controls:ExtendedLabel FontNameAndroid="Open 24 Display St.ttf"
+                                        FontNameIOS="Open 24 Display St"
+                                        FontSize="20"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="This uses a custom font set xaml using obsolete properties 'FontNameAndroid', 'FontNameIOS'" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -48,15 +48,14 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
+    <Compile Include="..\AssemblyInfo.Caching.cs">
+      <Link>Properties\AssemblyInfo.Caching.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MemoryCache.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
-      <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
-      <Name>XLabs.Serialization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XLabs.Caching\XLabs.Caching.csproj">
       <Project>{da63bb22-3a83-4bdd-ac19-00904877f4fa}</Project>
       <Name>XLabs.Caching</Name>

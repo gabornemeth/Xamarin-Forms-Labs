@@ -1,0 +1,36 @@
+{
+	"executeUnitTest": 0,
+	"version": {
+		"VersionFile": "./version.Forms.json",
+		"AssemblyInfoFile": "./src/Forms/AssemblyInfo.Forms.cs",
+		"LoadFrom": "versionfile",
+		"AutoIncrementVersion": false
+	},
+	"build": {
+		"SourcePath": "./src",
+		"SolutionFileSpec": "./src/XLabs.Forms.sln",
+		"TreatWarningsAsErrors": false,
+		"EnableXamarinIOS": false,
+		"MacAgentIPAddress": "",
+		"MacAgentUserName": "",
+		"MacAgentUserPassword": ""
+	},
+	"test": {
+		"SourcePath": "./tests/Forms",
+		"ResultsPath": "./artifacts",
+		"AssemblyFileSpec": "*.Tests.dll",
+		"Framework": "NUnit3"
+	},
+	"nuget": {
+		"NuGetConfig": "./.nuget/NuGet.config",
+		"FeedUrl": "",
+		"FeedAPIKey": "",
+		"ArtifactsPath": "./artifacts/packages",
+		"NuspecPath": "./nuspec/Forms",
+		"UpdateVersion": true,
+		"UpdateLibraryDependencies": true,
+		"VersionDependencyForLibrary": "greaterthanorequal",
+		"LibraryNamespaceBase": "XLabs.Forms",
+		"LibraryMinVersionDependency": ""
+	}
+}

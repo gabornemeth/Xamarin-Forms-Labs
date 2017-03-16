@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="XLabs.Samples.Pages.Services.BluetoothPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Command="{Binding OpenSettings}" Text="Open Settings" />
+            <Button Command="{Binding Scan}" Text="Scan Devices" />
+            <ListView HeightRequest="250" ItemsSource="{Binding Devices}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label HorizontalOptions="Center" Text="{Binding Name}" />
+                                <Label HorizontalOptions="Center" Text="{Binding Address}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Find Serial Port Devices" />
+            <ListView ItemsSource="{Binding SerialPorts}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label HorizontalOptions="Center" Text="{Binding}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

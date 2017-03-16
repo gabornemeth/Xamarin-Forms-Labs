@@ -99,16 +99,14 @@ namespace IocTests
         {
             var container = this.GetEmptyContainer();
 
-            container.Register(typeof(IFoo<>), typeof(Foo<>));
+            container.Register(typeof(IFoo<int>), typeof(Foo<int>));
 
             var resolver = container.GetResolver();
 
             var genericInt = resolver.Resolve<IFoo<int>>();
 
             Assert.IsNotNull(genericInt);
-
-            //Assert.IsTrue(genericInt is IFoo<int>);
-
+            Assert.IsTrue(genericInt is IFoo<int>);
         }
 
         [Test]
@@ -116,7 +114,8 @@ namespace IocTests
         {
             var container = this.GetEmptyContainer();
 
-            container.Register<IService, Service>().Register<IMyService, MyServiceNoDefaultCtor>();
+            container.Register<IService, Service>()
+                .Register<IMyService, MyServiceNoDefaultCtor>();
 
             var resolver = container.GetResolver();
 

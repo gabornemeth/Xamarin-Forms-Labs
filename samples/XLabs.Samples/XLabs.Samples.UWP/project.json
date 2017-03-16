@@ -8,7 +8,9 @@
     "SQLite.Net.Core-PCL": "3.1.1",
     "System.Net.Http": "4.1.0",
     "Xam.Plugins.Settings": "2.5.1",
-    "Xamarin.Forms": "2.3.2.127"
+    "Xamarin.Forms": "2.3.3.193",
+    "XLabs.IoC": "2.3.2-pre04",
+    "XLabs.Serialization": "2.3.2-pre04"
   },
   "frameworks": {
     "uap10.0": {}

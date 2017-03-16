@@ -30,12 +30,14 @@ public class Settings
 	public VersionSettings Version {get;set;}
 	public BuildSettings Build {get;set;}
 	public NuGetSettings NuGet {get;set;}
+	public TestSettings Test { get; set; }
 
 	public void Display(ICakeContext context)
 	{
 		context.Information("Settings:");
 		Version.Display(context);
 		Build.Display(context);
+		Test.Display(context);
 		NuGet.Display(context);
 	}
 }
@@ -52,7 +54,6 @@ public class VersionSettings
 	public bool LoadFromGit {get;set;}
 	public string LoadFrom {get;set;}
 	public bool AutoIncrementVersion {get;set;}
-	public string NamespaceBase {get;set;}
 
 	public void Display(ICakeContext context)
 	{
@@ -61,7 +62,29 @@ public class VersionSettings
 		context.Information("\tAssemblyInfo File: {0}", AssemblyInfoFile);
 		context.Information("\tLoad From: {0}", LoadFrom);
 		context.Information("\tAutoIncrement Version: {0}", AutoIncrementVersion);
-		context.Information("\tNamespace Base: {0}", NamespaceBase);
+	}
+}
+
+public class TestSettings
+{
+	public string SourcePath { get; set; }
+	public string ResultsPath { get; set; }
+	public string AssemblyFileSpec { get; set; }
+	public string Framework { get; set; }
+
+    public TestSettings()
+	{
+		AssemblyFileSpec = "*.Tests.dll";
+		Framework = "NUnit3";
+	}
+
+	public void Display(ICakeContext context)
+	{
+		context.Information("Test Settings:");
+		context.Information("\tSource Path: {0}", SourcePath);
+		context.Information("\tAssembly File Spec: {0}", AssemblyFileSpec);
+		context.Information("\tResultsPath Path: {0}", ResultsPath);
+		context.Information("\tFramework: {0}", Framework);
 	}
 }
 
@@ -119,6 +142,7 @@ public class NuGetSettings
 		ArtifactsPath = "artifacts/packages";
 		UpdateVersion = false;
 		VersionDependencyForLibrary = VersionDependencyTypes.none;
+		LibraryNamespaceBase = "XLabs";
 	}
 
 	public string NuGetConfig {get;set;}
@@ -128,6 +152,7 @@ public class NuGetSettings
 	public string ArtifactsPath {get;set;}
 	public bool UpdateVersion {get;set;}
 	public VersionDependencyTypes VersionDependencyForLibrary {get;set;}
+	public string LibraryNamespaceBase { get; set; }
 
 	public string NuSpecFileSpec {
 		get {

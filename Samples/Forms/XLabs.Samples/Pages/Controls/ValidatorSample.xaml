@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="XLabs.Samples.Pages.Controls.ValidatorSample"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lb="clr-namespace:XLabs.Forms.Behaviors;assembly=XLabs.Forms"
+             xmlns:lc="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:lcon="clr-namespace:XLabs.Forms.Converter;assembly=XLabs.Forms"
+             xmlns:lp="clr-namespace:XLabs.Forms.Pages;assembly=XLabs.Forms"
+             xmlns:lval="clr-namespace:XLabs.Forms.Validation;assembly=XLabs.Forms"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <lval:Validator x:Key="Anynamehere">
+                <lval:Validator.Sets>
+                    <lval:RuleSet>
+
+                        <!--  Start of rules  -->
+                        <!--  Each rule has it's own set of actions.  -->
+                        <lval:RuleSet.Rules>
+
+                            <lval:Rule Element="{x:Reference Required}"
+                                       Validators="Required"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference RequiredImage}">
+                                        <lval:Action.Setters>
+                                            <lval:PropertySetter InvalidValue="invalid.png"
+                                                                 ValidValue="valid.png"
+                                                                 Property="Source" />
+                                        </lval:Action.Setters>
+                                    </lval:Action>
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference RequiredEmail}"
+                                       Validators="Required,Email"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <!--  Update image  -->
+                                    <lval:Action Element="{x:Reference RequiredEmailImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                    <!--  Update the entry  -->
+                                    <!--  An action without an element is applies it's properties to the Element named in the rule definition  -->
+                                    <lval:Action InvalidValue="Large,Bold"
+                                                 ValidValue="Medium,None"
+                                                 Property="Font">
+                                        <lval:Action.Setters>
+                                            <lval:PropertySetter InvalidValue="Green"
+                                                                 ValidValue="Transparent"
+                                                                 Property="BackgroundColor" />
+                                            <lval:PropertySetter InvalidValue="1.0"
+                                                                 ValidValue="0.5"
+                                                                 Property="Opacity" />
+                                        </lval:Action.Setters>
+                                    </lval:Action>
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference Email}"
+                                       RuleName="Rule3"
+                                       UserDefined="EndInCom"
+                                       Validators="Email"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference EmailImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference GreaterThan}"
+                                       Minimum="10"
+                                       Validators="GreaterThan"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference GreaterThanImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference LessThan}"
+                                       Maximum="10"
+                                       Validators="LessThan"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference LessThanImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference Between}"
+                                       Maximum="10"
+                                       Minimum="5"
+                                       Validators="Between"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference BetweenImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference Pattern}"
+                                       Regex="^[\p{N}]*$"
+                                       Validators="Pattern"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference PatternImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference EInteger}"
+                                       Validators="Integer"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference IntegerImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference MinLength}"
+                                       MinimumLength="5"
+                                       Validators="MinLength"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference MinLengthImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference MaxLength}"
+                                       MaximumLength="10"
+                                       Validators="MaxLength"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference MaxLengthImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference AlphaOnly}"
+                                       Validators="AlphaOnly"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference AlphaOnlyImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+
+                            <lval:Rule Element="{x:Reference AlphaNumeric}"
+                                       Validators="AlphaNumeric"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference AlphaNumericImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference EDateTime}"
+                                       Validators="DateTime"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference DateTimeImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+                            <lval:Rule Element="{x:Reference ENumeric}"
+                                       Validators="Numeric"
+                                       Property="Text">
+                                <lval:Rule.Actions>
+                                    <lval:Action Element="{x:Reference NumericImage}"
+                                                 InvalidValue="invalid.png"
+                                                 ValidValue="valid.png"
+                                                 Property="Source" />
+                                </lval:Rule.Actions>
+                            </lval:Rule>
+
+
+                        </lval:RuleSet.Rules>
+                        <!--  End of rules  -->
+                        <!--  Start of  ValidationSet.Actions  -->
+                        <!--  The ValidationSet rules are applied based on the total success or total failure of the validationset  -->
+                        <!--  An action without a Element defined is applied to all rule elements within that the Validationset  -->
+                        <!--  that have the property defined  -->
+                        <!--  End of Actions  -->
+                        <lval:RuleSet.Actions>
+                            <lval:Action InvalidValue="Red"
+                                         ValidValue="Green"
+                                         Property="TextColor" />
+                            <lval:Action Element="{x:Reference AllPassed}"
+                                         InvalidValue="Validation Failure"
+                                         ValidValue="All Validations Passed"
+                                         Property="Text" />
+                            <lval:Action Element="{x:Reference AllPassed}"
+                                         InvalidValue="false"
+                                         ValidValue="true"
+                                         Property="IsEnabled" />
+                        </lval:RuleSet.Actions>
+
+
+                    </lval:RuleSet>
+
+                </lval:Validator.Sets>
+            </lval:Validator>
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView.Padding>
+            <OnPlatform x:TypeArguments="Thickness"
+                        Android="20,20,20,20"
+                        WinPhone="20,20,20,20"
+                        iOS="20,40,20,20" />
+        </ScrollView.Padding>
+
+        <StackLayout>
+            <Button x:Name="AllPassed" />
+            <Grid lb:GridLayout.ColumnWidths="*,18" lb:GridLayout.RowHeights="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                <Image x:Name="RequiredImage" Grid.Column="1" />
+                <!--  Rule1 Required Only  -->
+                <Entry x:Name="Required"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Placeholder="Required" />
+                <!--  Rule2 Required and Email  -->
+                <Entry x:Name="RequiredEmail"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Placeholder="RequiredEmail" />
+                <Image x:Name="RequiredEmailImage"
+                       Grid.Row="1"
+                       Grid.Column="1" />
+                <!--  Rule 3 Email  -->
+                <Entry x:Name="Email"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       Placeholder="Email" />
+                <Image x:Name="EmailImage"
+                       Grid.Row="2"
+                       Grid.Column="1" />
+                <!--  Greater Than  -->
+                <Entry x:Name="GreaterThan"
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       Placeholder="GreaterThan" />
+                <Image x:Name="GreaterThanImage"
+                       Grid.Row="3"
+                       Grid.Column="1" />
+                <!--  Less Than  -->
+                <Entry x:Name="LessThan"
+                       Grid.Row="4"
+                       Grid.Column="0"
+                       Placeholder="Less Than" />
+                <Image x:Name="LessThanImage"
+                       Grid.Row="4"
+                       Grid.Column="1" />
+                <!--  Between  -->
+                <Entry x:Name="Between"
+                       Grid.Row="5"
+                       Grid.Column="0"
+                       Placeholder="Between" />
+                <Image x:Name="BetweenImage"
+                       Grid.Row="5"
+                       Grid.Column="1" />
+                <!--  Pattern  -->
+                <Entry x:Name="Pattern"
+                       Grid.Row="6"
+                       Grid.Column="0"
+                       Placeholder="Pattern" />
+                <Image x:Name="PatternImage"
+                       Grid.Row="6"
+                       Grid.Column="1" />
+                <!--  Predicate  -->
+                <Entry x:Name="Predicate"
+                       Grid.Row="7"
+                       Grid.Column="0"
+                       Placeholder="Predicate" />
+                <Image x:Name="PredicateImage"
+                       Grid.Row="7"
+                       Grid.Column="1" />
+                <!--  Integer  -->
+                <Entry x:Name="EInteger"
+                       Grid.Row="8"
+                       Grid.Column="0"
+                       Placeholder="Integer" />
+                <Image x:Name="IntegerImage"
+                       Grid.Row="8"
+                       Grid.Column="1" />
+                <!--  MinLength  -->
+                <Entry x:Name="MinLength"
+                       Grid.Row="9"
+                       Grid.Column="0"
+                       Placeholder="MinLength" />
+                <Image x:Name="MinLengthImage"
+                       Grid.Row="9"
+                       Grid.Column="1" />
+                <!--  MaxLength  -->
+                <Entry x:Name="MaxLength"
+                       Grid.Row="10"
+                       Grid.Column="0"
+                       Placeholder="MaxLength" />
+                <Image x:Name="MaxLengthImage"
+                       Grid.Row="10"
+                       Grid.Column="1" />
+                <!--  AlphaOnly  -->
+                <Entry x:Name="AlphaOnly"
+                       Grid.Row="11"
+                       Grid.Column="0"
+                       Placeholder="AlphaOnly" />
+                <Image x:Name="AlphaOnlyImage"
+                       Grid.Row="11"
+                       Grid.Column="1" />
+                <!--  AlphaNumeric  -->
+                <Entry x:Name="AlphaNumeric"
+                       Grid.Row="12"
+                       Grid.Column="0"
+                       Placeholder="AlphaNumeric" />
+                <Image x:Name="AlphaNumericImage"
+                       Grid.Row="12"
+                       Grid.Column="1" />
+                <!--  DateTime  -->
+                <Entry x:Name="EDateTime"
+                       Grid.Row="13"
+                       Grid.Column="0"
+                       Placeholder="DateTime" />
+                <Image x:Name="DateTimeImage"
+                       Grid.Row="13"
+                       Grid.Column="1" />
+                <!--  Numeric  -->
+                <Entry x:Name="ENumeric"
+                       Grid.Row="14"
+                       Grid.Column="0"
+                       Placeholder="Numeric" />
+                <Image x:Name="NumericImage"
+                       Grid.Row="14"
+                       Grid.Column="1" />
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

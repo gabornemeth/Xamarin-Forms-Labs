@@ -2,6 +2,7 @@
 // Directives
 ///////////////////////////////////////////////////////////////////////////////
 
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.5.0
 #l "versionUtils.cake"
 #l "settingsUtils.cake"
 
@@ -11,7 +12,7 @@
 
 var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
-var settingsFile = Argument<string>("settingsFile", ".\\settings.json");
+var settingsFile = Argument<string>("settingsFile", ".\\settings_notexist.json");
 var skipBuild = Argument<string>("skipBuild", "false").ToLower() == "true" || Argument<string>("skipBuild", "false") == "1";
 
 var buildSettings = SettingsUtils.LoadSettings(Context, settingsFile);
@@ -125,29 +126,42 @@ Task("Build")
     foreach(var solution in solutions)
     {
         Information("Building {0}", solution);
-				var msBuildSettings = new MSBuildSettings {
-					MaxCpuCount = 1,
-					Configuration = configuration,
-					PlatformTarget = PlatformTarget.MSIL,
-//					Verbosity = Verbosity.Diagnostic
-				}.WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
-				 .WithTarget("Build");
+		var msBuildSettings = new MSBuildSettings {
+			MaxCpuCount = 1,
+			Configuration = configuration,
+			PlatformTarget = PlatformTarget.MSIL,
+			ToolPath = @"c:\Program Files (x86)\MSBuild\14.0\bin\msbuild.exe",
+//			Verbosity = Verbosity.Diagnostic
+		}.WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
+		 .WithTarget("Build");
 
-				if (buildSettings.Build.EnableXamarinIOS)
-				{
-					// Mac build host connection properties
-					msBuildSettings.WithProperty("ServerAddress", buildSettings.Build.MacAgentIPAddress);
-					msBuildSettings.WithProperty("ServerUser", buildSettings.Build.MacAgentUserName);
-					msBuildSettings.WithProperty("ServerPassword", buildSettings.Build.MacAgentUserPassword);
-				}
+		if (buildSettings.Build.EnableXamarinIOS)
+		{
+			// Mac build host connection properties
+			msBuildSettings.WithProperty("ServerAddress", buildSettings.Build.MacAgentIPAddress);
+			msBuildSettings.WithProperty("ServerUser", buildSettings.Build.MacAgentUserName);
+			msBuildSettings.WithProperty("ServerPassword", buildSettings.Build.MacAgentUserPassword);
+		}
 
         MSBuild(solution, msBuildSettings);
     }
 });
 
+Task("Run-Unit-Tests")
+    .IsDependentOn("Build")
+    .Does(() =>
+{
+	var nUnitSettings = new NUnit3Settings {
+        NoResults = false
+	};
+	var testFileSpec = buildSettings.Test.SourcePath + "/**/bin/" + configuration + "/" + buildSettings.Test.AssemblyFileSpec;
+	Information("Testing {0}", testFileSpec);
+    NUnit3(testFileSpec, nUnitSettings);
+});
+
 Task("Package")
     .Description("Packages all nuspec files into nupkg packages.")
-//    .IsDependentOn("Build")
+    .IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
 	var artifactsPath = Directory(buildSettings.NuGet.ArtifactsPath);
@@ -155,16 +169,17 @@ Task("Package")
 
 	CreateDirectory(artifactsPath);
 
-	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec);
+	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec).OrderBy(filePath => filePath.FullPath.Length);
 	foreach(var nsf in nuspecFiles)
 	{
+
 		Information("Packaging {0}", nsf);
 
 		if (buildSettings.NuGet.UpdateVersion) {
-			VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());
+			VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.FullPath);
 		}
 
-		VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.ToString());
+		VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.FullPath);
 
 		NuGetPack(nsf, new NuGetPackSettings {
 			Version = versionInfo.ToString(),
@@ -228,7 +243,6 @@ Task("UnPublish")
 		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
 			args = args + string.Format(" -ApiKey {0}", buildSettings.NuGet.FeedApiKey);
 		}
-
 
 		if (!string.IsNullOrEmpty(buildSettings.NuGet.NuGetConfig)) {
 			args = args + string.Format(" -Config {0}", buildSettings.NuGet.NuGetConfig);

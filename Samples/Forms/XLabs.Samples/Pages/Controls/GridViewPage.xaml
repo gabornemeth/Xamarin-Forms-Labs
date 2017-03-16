@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvvm:BaseView x:Class="XLabs.Samples.Pages.Controls.GridViewPage"
+               xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+               xmlns:mvvm="clr-namespace:XLabs.Forms.Mvvm;assembly=XLabs.Forms"
+               Title="GridView">
+    <mvvm:BaseView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*" />
+                <ColumnDefinition Width="33*" />
+                <ColumnDefinition Width="33*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Command="{Binding AddImagesCommand}"
+                    Text="Add Item" />
+            <Button Grid.Column="1"
+                    Command="{Binding RemoveImagesCommand}"
+                    Text="Remove Item" />
+            <Button Grid.Column="2"
+                    Command="{Binding ChangeImageSourceCommand}"
+                    Text="Switch item source" />
+            <controls:GridView x:Name="GrdView"
+                               Grid.Row="1"
+                               Grid.ColumnSpan="3"
+                               ItemHeight="200"
+                               ItemWidth="152"
+                               ItemsSource="{Binding Images}">
+                <controls:GridView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Image Source="{Binding}" />
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:GridView.ItemTemplate>
+            </controls:GridView>
+        </Grid>
+    </mvvm:BaseView.Content>
+</mvvm:BaseView>

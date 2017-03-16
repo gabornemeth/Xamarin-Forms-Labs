@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XLabs.Samples.Pages.Controls.ExtendedDatePickerPage"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             Title="DatePicker">
+  <StackLayout Orientation="Vertical">
+    <controls:ExtendedDatePicker x:Name="DatePicker" />
+    <Button x:Name="ButtonNull" Text="Set null value" />
+    <Label Text="{Binding Date, Source={x:Reference DatePicker}, StringFormat='Date={0}'}" />
+  </StackLayout>
+</ContentPage>

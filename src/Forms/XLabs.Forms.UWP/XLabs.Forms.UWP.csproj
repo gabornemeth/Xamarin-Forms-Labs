@@ -116,18 +116,6 @@
     <EmbeddedResource Include="Properties\XLabs.Forms.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
-      <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
-      <Name>XLabs.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Platform\XLabs.Platform.UWP\XLabs.Platform.UWP.csproj">
-      <Project>{ec8490d9-54f3-496a-8dc3-759d9ec53b74}</Project>
-      <Name>XLabs.Platform.UWP</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Platform\XLabs.Platform\XLabs.Platform.csproj">
-      <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
-      <Name>XLabs.Platform</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XLabs.Forms\XLabs.Forms.csproj">
       <Project>{59ad9d73-9348-4262-a869-6168057da26a}</Project>
       <Name>XLabs.Forms</Name>

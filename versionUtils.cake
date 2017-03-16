@@ -136,24 +136,21 @@ public class VersionUtils
 				throw new ArgumentNullException("context");
 			}
 
-			var xpaths = new string[] {
-				"/n:package/n:metadata/n:version", // version of the package
-				"/n:package/n:metadata/n:dependencies/n:group/n:dependency[contains(@id, 'XLabs.')]/@version", // XLabs dependency packages
-			};
+			var xpath = "/n:package/n:metadata/n:version"; // version of the package
 
 			context.Information("\tUpdating Version in Nuspec File {0} to {1}", nuspecFile, verInfo.ToString());
 
 			try {
-				foreach (var xpath in xpaths)
-				{
 				context.XmlPoke(nuspecFile, xpath, verInfo.ToString(), new XmlPokeSettings {
 					PreserveWhitespace = true
 					, Namespaces = new Dictionary<string, string> {
 						{ /* Prefix */ "n", /* URI */ "http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"}
 					}
-					});
-				}
-		} catch {} // Its ok to throw these away as it most likely means the file didn't exist or the XPath didn't find any nodes
+				});
+			}
+			catch (Exception ex) {
+				context.Warning("\t" + ex.Message);
+			} // Its ok to throw these away as it most likely means the file didn't exist or the XPath didn't find any nodes
 	}
 
 	public static void UpdateNuSpecVersionDependency(ICakeContext context, Settings settings, VersionInfo verInfo, FilePath nuspecFile)
@@ -163,21 +160,23 @@ public class VersionUtils
 			throw new ArgumentNullException("context");
 		}
 
-		if (string.IsNullOrEmpty(settings.Version.NamespaceBase)) return;
+		context.Information("\tUpdating dependencies in nuspec file {0}", nuspecFile);
+		if (string.IsNullOrEmpty(settings.NuGet.LibraryNamespaceBase))
+			return;
 
-		var xpq = string.Format("/n:package/n:metadata/n:dependencies//n:dependency[starts-with(@id, '{0}')]/@version", settings.Version.NamespaceBase);
+		var xpq = string.Format("/n:package/n:metadata/n:dependencies//n:dependency[starts-with(@id, '{0}')]/@version", settings.NuGet.LibraryNamespaceBase);
 		var replacementStr = verInfo.ToString();
 
 		switch (settings.NuGet.VersionDependencyForLibrary)
 		{
 			case "none": break;
 			case "exact": replacementStr = string.Format("[{0}]", replacementStr); break;
-			case "greaterthan": replacementStr = string.Format("(,{0})", replacementStr); break;
-			case "greaterthanorequal": replacementStr = string.Format("(,{0}]", replacementStr); break;
-			case "lessthan": replacementStr = string.Format("({0},)", replacementStr); break;
+			case "greaterthan": replacementStr = string.Format("({0},)", replacementStr); break;
+			case "greaterthanorequal": break;
+			case "lessthan": replacementStr = string.Format("(,{0})", replacementStr); break;
 		}
 
-		context.Information("\tUpdating Version for {0} Namespace Assemblies in Nuspec File {1} to {2}", settings.Version.NamespaceBase, nuspecFile, replacementStr);
+		context.Information("\tUpdating Version for {0} Namespace Assemblies in Nuspec File {1} to {2}", settings.NuGet.LibraryNamespaceBase, nuspecFile, replacementStr);
 
 		try {
 			context.XmlPoke(nuspecFile, xpq, replacementStr, new XmlPokeSettings {
@@ -186,7 +185,10 @@ public class VersionUtils
 					{ /* Prefix */ "n", /* URI */ "http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"}
 				}
 				});
-		} catch {} // Its ok to throw these away as it most likely means the file didn't exist or the XPath didn't find any nodes
+		}
+		catch (Exception ex) {
+			context.Warning("\t" + ex.Message);
+		} // Its ok to throw these away as it most likely means the file didn't exist or the XPath didn't find any nodes
 	}
 }
 

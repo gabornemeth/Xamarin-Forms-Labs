@@ -256,4 +256,5 @@ paket-files/
 tools/Addins/
 tools/Cake/
 tools/GitVersion.CommandLine
+tools/NUnit.ConsoleRunner
 tools/nuget.exe

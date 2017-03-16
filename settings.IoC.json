@@ -1,0 +1,36 @@
+{
+	"executeUnitTest": 0,
+	"version": {
+		"VersionFile": "./version.IoC.json",
+		"AssemblyInfoFile": "./src/IoC/AssemblyInfo.Shared.cs",
+		"LoadFrom": "versionfile",
+		"AutoIncrementVersion": false
+	},
+	"build": {
+		"SourcePath": "./src",
+		"SolutionFileSpec": "./src/XLabs.IoC.sln",
+		"TreatWarningsAsErrors": false,
+		"EnableXamarinIOS": false,
+		"MacAgentIPAddress": "",
+		"MacAgentUserName": "",
+		"MacAgentUserPassword": ""
+	},
+	"test": {
+		"SourcePath": "./tests/IoC",
+		"ResultsPath": "./artifacts",
+		"AssemblyFileSpec": "*.Tests.dll",
+		"Framework": "NUnit3"
+	},
+	"nuget": {
+		"NuGetConfig": "./.nuget/NuGet.config",
+		"FeedUrl": "",
+		"FeedAPIKey": "",
+		"ArtifactsPath": "./artifacts/packages",
+		"NuspecPath": "./nuspec/IoC",
+		"UpdateVersion": true,
+		"UpdateLibraryDependencies": true,
+		"VersionDependencyForLibrary": "greaterthanorequal",
+		"LibraryNamespaceBase": "XLabs.IoC",
+		"LibraryMinVersionDependency": ""
+	}
+}
