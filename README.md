@@ -5,16 +5,16 @@
 
 **XLabs** is a open source project that aims to provide a powerful and cross platform set of services and controls tailored to work with Xamarin and [Xamarin Forms](http://xamarin.com/forms).
 
-##NOTICE: This project is no longer maintained. It may not work with newer versions of Xamarin.Forms. 
+## NOTICE: This project is no longer officially maintained.
+**This is a private fork, which can be significantly differenct from the [original one](https://github.com/XLabs/Xamarin-Forms-Labs). It's focusing on the controls only. Recent NuGet packages can be grabbed from [my private feed on MyGet](https://www.myget.org/F/gabornemeth/api/v3/index.json).**
 
 Call for action for all Xamarin Developers, embrace this project and share your controls and services with the community, add your own control to the toolkit.
 
 **Important for developers**
 The master branch is the current development branch.
-The v.2.0 is the stable branch.
 
 **Find a Bug or Fix a Bug** [Issue Tracker]
-(https://github.com/XLabs/Xamarin-Forms-Labs/issues)
+(https://github.com/gabornemeth/Xamarin-Forms-Labs/issues)
 
 
 **Available controls**
