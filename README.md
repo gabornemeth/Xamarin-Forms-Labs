@@ -13,8 +13,7 @@ Call for action for all Xamarin Developers, embrace this project and share your 
 **Important for developers**
 The master branch is the current development branch.
 
-**Find a Bug or Fix a Bug** [Issue Tracker]
-(https://github.com/gabornemeth/Xamarin-Forms-Labs/issues)
+**Find a Bug or Fix a Bug** [Issue Tracker](https://github.com/gabornemeth/Xamarin-Forms-Labs/issues)
 
 
 **Available controls**
