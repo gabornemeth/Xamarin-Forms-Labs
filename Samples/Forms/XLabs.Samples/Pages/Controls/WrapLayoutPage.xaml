@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="XLabs.Samples.Pages.Controls.WrapLayoutPage"
+             Title="WrapLayout">
+    <controls:WrapLayout Orientation="Horizontal">
+        <Label Text="Label #1" />
+        <Button Text="Button #1" />
+        <Label Text="Label #2" />
+        <Button Text="Button #2" />
+        <Switch />
+        <Label Text="Label #3" />
+        <Button Text="Button #3" />
+    </controls:WrapLayout>
+</ContentPage>

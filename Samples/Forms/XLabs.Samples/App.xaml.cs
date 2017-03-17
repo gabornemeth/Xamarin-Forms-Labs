@@ -262,6 +262,8 @@ namespace XLabs.Samples
                 {"WebImage", typeof(WebImagePage)},
                 {"IconLabel", typeof(IconLabelPage)},
                 {"IconButton", typeof(IconButtonPage)},
+                {"WrapLayout", typeof(WrapLayoutPage)},
+                {"WrapGrid", typeof(WrapGridPage)}
             };
 
             // This is actually a lot of work just to enable something
@@ -290,8 +292,8 @@ namespace XLabs.Samples
         {
             var listItems = new SortedDictionary<string, Type>
             {
-                 {"US Presidents Circle Image", typeof(UsPresidentList)},
-                 {"Web hybrid func callback", typeof(WebHybridSamplePage)},
+                {"US Presidents Circle Image", typeof(UsPresidentList)},
+                {"Web hybrid func callback", typeof(WebHybridSamplePage)},
                 {"Web hybrid page loading", typeof(WebPageLoadSample)},
                 {"Converter page", typeof(ConverterPage) },
                 {"Orientation page", typeof(OrientationPage) },

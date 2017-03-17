@@ -10,7 +10,7 @@
 		"SourcePath": "./src",
 		"SolutionFileSpec": "./src/XLabs.Forms.sln",
 		"TreatWarningsAsErrors": false,
-		"EnableXamarinIOS": false,
+		"EnableXamarinIOS": true,
 		"MacAgentIPAddress": "",
 		"MacAgentUserName": "",
 		"MacAgentUserPassword": ""

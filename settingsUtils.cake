@@ -21,6 +21,10 @@ public class SettingsUtils
 		if (!string.IsNullOrEmpty(envFeedApiKey))
 			settings.NuGet.FeedApiKey = envFeedApiKey;
 
+		settings.Build.MacAgentIPAddress = context.EnvironmentVariable("XAMARIN_MAC_IP");
+		settings.Build.MacAgentUserName = context.EnvironmentVariable("XAMARIN_MAC_USER");
+		settings.Build.MacAgentUserPassword = context.EnvironmentVariable("XAMARIN_MAC_PASSWORD");
+
 		return settings;
 	}
 }
@@ -105,7 +109,7 @@ public class BuildSettings
 	public string NugetConfigPath {get;set;}
 
 	public bool EnableXamarinIOS {get;set;}
-	public string MacAgentIPAddress {get;set;}
+	public string MacAgentIPAddress {get; set; }
 	public string MacAgentUserName {get;set;}
 	public string MacAgentUserPassword {get;set;}
 

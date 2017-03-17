@@ -79,6 +79,7 @@
     <Compile Include="Controls\ExtendedViewCell.cs" />
     <Compile Include="Controls\GesturesContentView.cs" />
     <Compile Include="Controls\GradientContentView.cs" />
+    <Compile Include="Controls\WrapGrid.cs" />
     <Compile Include="Controls\GridView.cs" />
     <Compile Include="Controls\HybridWebView.cs" />
     <Compile Include="Controls\HyperLinkLabel.cs" />

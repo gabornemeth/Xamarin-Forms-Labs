@@ -137,6 +137,12 @@
     <Compile Include="Pages\Controls\WebImagePage.xaml.cs">
       <DependentUpon>WebImagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Controls\WrapGridPage.xaml.cs">
+      <DependentUpon>WrapGridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\WrapLayoutPage.xaml.cs">
+      <DependentUpon>WrapLayoutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Mvvm\CanvasWebHybrid.xaml.cs">
       <DependentUpon>CanvasWebHybrid.xaml</DependentUpon>
     </Compile>
@@ -411,6 +417,18 @@
       <HintPath>..\..\..\src\packages\XLabs.Serialization.2.3.2-pre04\lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Serialization.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\WrapLayoutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Controls\WrapGridPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\..\src\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\..\src\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
