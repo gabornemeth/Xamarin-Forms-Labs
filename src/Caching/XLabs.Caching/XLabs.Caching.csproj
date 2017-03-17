@@ -41,6 +41,9 @@
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
+    <Compile Include="..\AssemblyInfo.Caching.cs">
+      <Link>Properties\AssemblyInfo.Caching.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAsyncCacheProvider.cs" />

@@ -1,9 +1,0 @@
-﻿{
-  "supports": {},
-  "dependencies": {
-    "Xam.Plugins.Settings": "2.5.1"
-  },
-  "frameworks": {
-    ".NETPortable,Version=v4.5,Profile=Profile259": {}
-  }
-}

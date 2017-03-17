@@ -17,11 +17,11 @@
 		<tags>Xamarin XLabs Forms Controls GridView ListView</tags>
 		<dependencies>
 			<group>
-				<dependency id="XLabs.Core" version="2.3.2-pre02" />
-				<dependency id="XLabs.IoC" version="2.3.2-pre02" />
-				<dependency id="XLabs.Platform" version="2.3.2-pre02" />
-				<dependency id="XLabs.Serialization" version="2.3.2-pre02" />
-				<dependency id="Xamarin.Forms" version="2.3.2.127" />
+				<dependency id="XLabs.Core" version="2.3.2-pre04" />
+				<dependency id="XLabs.IoC" version="2.3.2-pre04" />
+				<dependency id="XLabs.Platform" version="2.3.2-pre05" />
+				<dependency id="XLabs.Serialization" version="2.3.2-pre04" />
+				<dependency id="Xamarin.Forms" version="2.3.3.193" />
 			</group>
 		</dependencies>
 	<frameworkAssemblies>

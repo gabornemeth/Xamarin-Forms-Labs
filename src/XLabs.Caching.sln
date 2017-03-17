@@ -5,34 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuspec", ".nuspec", "{7C2AC26D-FFB8-4CF1-B189-1955A747B770}"
 	ProjectSection(SolutionItems) = preProject
-		..\nuspec\XLabs.Caching.Net45.nuspec = ..\nuspec\XLabs.Caching.Net45.nuspec
-		..\nuspec\XLabs.Caching.nuspec = ..\nuspec\XLabs.Caching.nuspec
-		..\nuspec\XLabs.Caching.SQLite.nuspec = ..\nuspec\XLabs.Caching.SQLite.nuspec
-		..\nuspec\XLabs.Core.nuspec = ..\nuspec\XLabs.Core.nuspec
-		..\nuspec\XLabs.Cryptography.nuspec = ..\nuspec\XLabs.Cryptography.nuspec
-		..\nuspec\XLabs.Forms.Charting.nuspec = ..\nuspec\XLabs.Forms.Charting.nuspec
-		..\nuspec\XLabs.Forms.nuspec = ..\nuspec\XLabs.Forms.nuspec
-		..\nuspec\XLabs.IoC.Autofac.nuspec = ..\nuspec\XLabs.IoC.Autofac.nuspec
-		..\nuspec\XLabs.IoC.Ninject.nuspec = ..\nuspec\XLabs.IoC.Ninject.nuspec
-		..\nuspec\XLabs.IoC.nuspec = ..\nuspec\XLabs.IoC.nuspec
-		..\nuspec\XLabs.IoC.SimpleInjector.nuspec = ..\nuspec\XLabs.IoC.SimpleInjector.nuspec
-		..\nuspec\XLabs.IoC.TinyIOC.nuspec = ..\nuspec\XLabs.IoC.TinyIOC.nuspec
-		..\nuspec\XLabs.IoC.Unity.nuspec = ..\nuspec\XLabs.IoC.Unity.nuspec
-		..\nuspec\XLabs.Platform.nuspec = ..\nuspec\XLabs.Platform.nuspec
-		..\nuspec\XLabs.Serialization.ASPNet.nuspec = ..\nuspec\XLabs.Serialization.ASPNet.nuspec
-		..\nuspec\XLabs.Serialization.JSON.nuspec = ..\nuspec\XLabs.Serialization.JSON.nuspec
-		..\nuspec\XLabs.Serialization.Net45.nuspec = ..\nuspec\XLabs.Serialization.Net45.nuspec
-		..\nuspec\XLabs.Serialization.nuspec = ..\nuspec\XLabs.Serialization.nuspec
-		..\nuspec\XLabs.Serialization.ProtoBuf.nuspec = ..\nuspec\XLabs.Serialization.ProtoBuf.nuspec
-		..\nuspec\XLabs.Serialization.ServiceStackV3.nuspec = ..\nuspec\XLabs.Serialization.ServiceStackV3.nuspec
-		..\nuspec\XLabs.Settings.nuspec = ..\nuspec\XLabs.Settings.nuspec
-		..\nuspec\XLabs.Settings.XamSettings.nuspec = ..\nuspec\XLabs.Settings.XamSettings.nuspec
-		..\nuspec\XLabs.Web.nuspec = ..\nuspec\XLabs.Web.nuspec
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{4290D156-3054-4484-B15B-B536F13F13F9}"
-	ProjectSection(SolutionItems) = preProject
-		..\docs\XLabs Presentation.pptx = ..\docs\XLabs Presentation.pptx
+		..\nuspec\Caching\XLabs.Caching.Net45.nuspec = ..\nuspec\Caching\XLabs.Caching.Net45.nuspec
+		..\nuspec\Caching\XLabs.Caching.nuspec = ..\nuspec\Caching\XLabs.Caching.nuspec
+		..\nuspec\Caching\XLabs.Caching.SQLite.nuspec = ..\nuspec\Caching\XLabs.Caching.SQLite.nuspec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{8507F10B-CF78-4193-BC5B-C602837092B3}"

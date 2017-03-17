@@ -219,22 +219,6 @@
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
-      <Project>{975a6560-2879-4953-aab3-47a48a92d21b}</Project>
-      <Name>XLabs.Settings.XamSettings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Settings\XLabs.Settings\XLabs.Settings.csproj">
-      <Project>{6c71abf9-5ce3-4f13-88a1-b86d6bf1769f}</Project>
-      <Name>XLabs.Settings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Web\XLabs.Web.Droid\XLabs.Web.Droid.csproj">
-      <Project>{1704eb24-5fba-4e98-9cd4-ee2ee4610a94}</Project>
-      <Name>XLabs.Web.Droid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Web\XLabs.Web\XLabs.Web.csproj">
-      <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
-      <Name>XLabs.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainActivity.cs.txt" />
@@ -246,8 +230,6 @@
   <Import Project="..\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Caching\XLabs.Caching.Sqlite.NUnit.Shared\XLabs.Caching.Sqlite.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Forms\XLabs.Forms.NUnit.Shared\XLabs.Forms.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Charting\XLabs.Forms.Charting.NUnit.Shared\XLabs.Forms.Charting.NUnit.Shared.projitems" Label="Shared" />

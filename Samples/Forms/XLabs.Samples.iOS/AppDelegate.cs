@@ -24,7 +24,6 @@ using SQLite.Net;
 using SQLite.Net.Platform.XamarinIOS;
 using System.IO;
 using UIKit;
-using XLabs.Caching.SQLite;
 using XLabs.Forms;
 using XLabs.Forms.Controls;
 using XLabs.Forms.Services;
@@ -92,10 +91,10 @@ namespace XLabs.Samples.iOS
                 .Register<IMediaPicker, MediaPicker>()
                 .Register<IXFormsApp>(app)
                 .Register<ISecureStorage, SecureStorage>()
-                .Register<global::XLabs.Ioc.IDependencyContainer>(t => resolverContainer)
-                .Register<global::XLabs.Caching.ICacheProvider>(
-                    t => new SQLiteSimpleCache(new SQLitePlatformIOS(),
-                        new SQLiteConnectionString(pathToDatabase, true), t.Resolve<global::XLabs.Serialization.IJsonSerializer>()));
+                .Register<global::XLabs.Ioc.IDependencyContainer>(t => resolverContainer);
+                //.Register<global::XLabs.Caching.ICacheProvider>(
+                //    t => new SQLiteSimpleCache(new SQLitePlatformIOS(),
+                //        new SQLiteConnectionString(pathToDatabase, true), t.Resolve<global::XLabs.Serialization.IJsonSerializer>()));
 
             XLabs.Ioc.Resolver.SetResolver(resolverContainer.GetResolver());
         }

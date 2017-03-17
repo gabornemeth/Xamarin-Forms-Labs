@@ -154,22 +154,6 @@
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
-      <Project>{975a6560-2879-4953-aab3-47a48a92d21b}</Project>
-      <Name>XLabs.Settings.XamSettings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Settings\XLabs.Settings\XLabs.Settings.csproj">
-      <Project>{6c71abf9-5ce3-4f13-88a1-b86d6bf1769f}</Project>
-      <Name>XLabs.Settings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Web\XLabs.Web.Net45\XLabs.Web.Net45.csproj">
-      <Project>{98972e3b-84be-4e92-a76b-9fa00476e27b}</Project>
-      <Name>XLabs.Web.Net45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Web\XLabs.Web\XLabs.Web.csproj">
-      <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
-      <Name>XLabs.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -179,8 +163,6 @@
   <Import Project="..\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Caching\XLabs.Caching.Net45.NUnit.Shared\XLabs.Caching.Net45.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Caching\XLabs.Caching.Sqlite.NUnit.Shared\XLabs.Caching.Sqlite.NUnit.Shared.projitems" Label="Shared" />

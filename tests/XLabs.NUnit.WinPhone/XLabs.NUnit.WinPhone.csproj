@@ -248,31 +248,13 @@
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Settings\XLabs.Settings.XamSettings\XLabs.Settings.XamSettings.csproj">
-      <Project>{975a6560-2879-4953-aab3-47a48a92d21b}</Project>
-      <Name>XLabs.Settings.XamSettings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Settings\XLabs.Settings\XLabs.Settings.csproj">
-      <Project>{6c71abf9-5ce3-4f13-88a1-b86d6bf1769f}</Project>
-      <Name>XLabs.Settings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Web\XLabs.Web.WinRT.Phone\XLabs.Web.WinRT.Phone.csproj">
-      <Project>{395a8d8c-c5bf-4006-aed6-86937a724331}</Project>
-      <Name>XLabs.Web.WinRT.Phone</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Web\XLabs.Web\XLabs.Web.csproj">
-      <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
-      <Name>XLabs.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Caching\XLabs.Caching.Sqlite.NUnit.Shared\XLabs.Caching.Sqlite.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Charting\XLabs.Forms.Charting.NUnit.Shared\XLabs.Forms.Charting.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\IOC\XLabs.IOC.Autofac.NUnit.Shared\XLabs.IOC.Autofac.NUnit.Shared.projitems" Label="Shared" />
