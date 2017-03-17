@@ -130,7 +130,7 @@ Task("Build")
 			MaxCpuCount = 1,
 			Configuration = configuration,
 			PlatformTarget = PlatformTarget.MSIL,
-			ToolPath = @"c:\Program Files (x86)\MSBuild\14.0\bin\msbuild.exe",
+//			ToolPath = @"c:\Program Files (x86)\MSBuild\14.0\bin\msbuild.exe",
 //			Verbosity = Verbosity.Diagnostic
 		}.WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
 		 .WithTarget("Build");
