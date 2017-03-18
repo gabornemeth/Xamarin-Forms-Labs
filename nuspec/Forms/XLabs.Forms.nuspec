@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
 		<id>XLabs.Forms</id>
-		<version>2.3.3-pre01</version>
+		<version>2.3.3-pre02</version>
 		<title>XLabs - Forms</title>
 		<authors>XLabs Team</authors>
 		<owners>XLabs Team</owners>
