@@ -38,13 +38,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\InverseStackToScrollOrientationConverter.cs" />
+    <Compile Include="Converters\InverseStackOrientationConverter.cs" />
     <Compile Include="Data\IImageListSource.cs" />
     <Compile Include="Data\ImageListItem.cs" />
     <Compile Include="Data\JsonImageListSource.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\TestModel.cs" />
+    <Compile Include="Model\TestJob.cs" />
+    <Compile Include="Model\TestOrganization.cs" />
+    <Compile Include="Model\TestPerson.cs" />
     <Compile Include="Pages\Controls\AutoCompletePage.xaml.cs">
       <DependentUpon>AutoCompletePage.xaml</DependentUpon>
     </Compile>

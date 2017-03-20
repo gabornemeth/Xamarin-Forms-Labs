@@ -11,31 +11,25 @@ namespace XLabs.Samples.Pages.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WrapGridPage : ContentPage
     {
-        private IList<TestPerson> _persons;
-        private int _counter = 1;
-        private Random _random = new Random();
+        private TestOrganization _organization = new TestOrganization();
 
         public WrapGridPage()
         {
             InitializeComponent();
 
-            _persons = new ObservableCollection<TestPerson>();
-            BindingContext = _persons;
+            BindingContext = _organization;
 
-            ButtonAdd.Clicked += delegate
+            UpdateButtonOrientationText();
+            ButtonOrientation.Clicked += delegate
             {
-                _persons.Add(new TestPerson
-                {
-                    Age = _random.Next(20, 80),
-                    FirstName = $"Joe #{_counter++}",
-                    LastName = "Average"
-                });
+                MyGrid.Orientation = MyGrid.Orientation == StackOrientation.Horizontal ? StackOrientation.Vertical : StackOrientation.Horizontal;
+                UpdateButtonOrientationText();
             };
-            ButtonRemove.Clicked += delegate
-            {
-                if (_persons.Count > 0)
-                    _persons.RemoveAt(0);
-            };
+        }
+
+        void UpdateButtonOrientationText()
+        {
+            ButtonOrientation.Text = MyGrid.Orientation == StackOrientation.Horizontal ? "To vertical" : "To Horizontal";
         }
     }
 }

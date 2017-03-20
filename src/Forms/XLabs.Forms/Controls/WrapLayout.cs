@@ -90,7 +90,7 @@ namespace XLabs.Forms.Controls
         /// </summary>
         /// <param name="widthConstraint">The available width for the element to use.</param>
         /// <param name="heightConstraint">The available height for the element to use.</param>
-        protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+        protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
         {
             if (WidthRequest > 0)
             {
@@ -176,7 +176,7 @@ namespace XLabs.Forms.Controls
 
             foreach (var item in Children.Where(c => c.IsVisible))
             {
-                var size = item.GetSizeRequest(widthConstraint, heightConstraint);
+                var size = item.Measure(widthConstraint, heightConstraint);
 
                 height = Math.Max(height, size.Request.Height);
 
@@ -226,7 +226,7 @@ namespace XLabs.Forms.Controls
 
                 foreach (var child in Children.Where(c => c.IsVisible))
                 {
-                    var request = child.GetSizeRequest(width, height);
+                    var request = child.Measure(width, height);
 
                     var childWidth = request.Request.Width;
                     var childHeight = request.Request.Height;
@@ -253,28 +253,22 @@ namespace XLabs.Forms.Controls
                 var yPos = y;
                 var xPos = x;
 
-                double max = 0;
-
                 foreach (var child in Children.Where(c => c.IsVisible))
                 {
-                    var request = child.GetSizeRequest(width, height);
-                    max = Math.Max(max, request.Request.Width);
-                }
-
-                foreach (var child in Children.Where(c => c.IsVisible))
-                {
-                    var request = child.GetSizeRequest(width, height);
+                    var request = child.Measure(width, height);
 
                     var childWidth = request.Request.Width;
                     var childHeight = request.Request.Height;
-
-                    rowHeight = Math.Max(rowHeight, childHeight);
 
                     if (xPos + childWidth > width)
                     {
                         xPos = x;
                         yPos += rowHeight + Spacing;
-                        rowHeight = 0;
+                        rowHeight = childHeight;
+                    }
+                    else
+                    {
+                        rowHeight = Math.Max(rowHeight, childHeight);
                     }
 
                     var region = new Rectangle(xPos, yPos, childWidth, childHeight);

@@ -4,7 +4,7 @@
 // Created          : 03-17-2017
 // 
 // Last Modified By : XLabs Team
-// Last Modified On : 03-17-2017
+// Last Modified On : 03-20-2017
 // ***********************************************************************
 // <copyright file="GridView.cs" company="XLabs Team">
 //     Copyright (c) XLabs Team. All rights reserved.
@@ -43,6 +43,74 @@ namespace XLabs.Forms.Controls
             this.Content = _layout;
         }
 
+        #region Grouping
+
+        /// <summary>
+        /// The IsGroupingEnabled dependency property
+        /// </summary>
+        public static readonly BindableProperty IsGroupingEnabledProperty = BindableProperty.Create(nameof(IsGroupingEnabled), typeof(bool), typeof(WrapGrid),
+            false, BindingMode.OneWay, propertyChanged: OnIsGroupingEnabledChanged);
+
+        /// <summary>
+        /// Gets or sets whether grouping is enabled
+        /// </summary>
+        /// <value>The items source.</value>
+        public bool IsGroupingEnabled
+        {
+            get
+            {
+                return (bool)GetValue(WrapGrid.IsGroupingEnabledProperty);
+            }
+            set
+            {
+                base.SetValue(WrapGrid.IsGroupingEnabledProperty, value);
+            }
+        }
+
+        private static void OnIsGroupingEnabledChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            var view = bindable as WrapGrid;
+            if (view != null)
+            {
+                view.RebuildLayout();
+            }
+        }
+
+        /// <summary>
+        /// The group header template property
+        /// </summary>
+        public static readonly BindableProperty GroupHeaderTemplateProperty = BindableProperty.Create(nameof(GroupHeaderTemplate), typeof(DataTemplate), typeof(WrapGrid),
+            null, BindingMode.OneWay, propertyChanged: OnGroupHeaderTemplateChanged);
+
+        /// <summary>
+        /// Gets or sets the group header template.
+        /// </summary>
+        /// <value>The group header template.</value>
+        public DataTemplate GroupHeaderTemplate
+        {
+            get
+            {
+                return GetValue(GroupHeaderTemplateProperty) as DataTemplate;
+            }
+            set
+            {
+                SetValue(GroupHeaderTemplateProperty, value);
+            }
+        }
+
+        private static void OnGroupHeaderTemplateChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            var view = bindable as WrapGrid;
+            if (view != null)
+            {
+                view.RebuildLayout();
+            }
+        }
+
+        #endregion
+
+        #region Orientation property
+
         /// <summary>
         /// The Orientation property
         /// </summary>
@@ -75,6 +143,8 @@ namespace XLabs.Forms.Controls
             }
         }
 
+        #endregion
+
         /// <summary>
         /// The items source property
         /// </summary>
@@ -96,6 +166,7 @@ namespace XLabs.Forms.Controls
                 base.SetValue(WrapGrid.ItemsSourceProperty, value);
             }
         }
+
         private static void OnItemsSourceChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             var view = bindable as WrapGrid;
@@ -154,21 +225,109 @@ namespace XLabs.Forms.Controls
                 notifyCollectionChanged.CollectionChanged += OnItemsCollectionChanged;
         }
 
+        private void RemoveViewOfItem(object item)
+        {
+            var itemToRemove = _layout.Children.FirstOrDefault(view => view.BindingContext == item);
+            if (itemToRemove != null)
+                _layout.Children.Remove(itemToRemove);
+        }
+
+        private int GetIndexForViewOfNewGroup(object item)
+        {
+            var enumerator = ItemsSource.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                if (enumerator.Current == item)
+                {
+                    if (enumerator.MoveNext())
+                    {
+                        return GetIndexOfViewForItem(enumerator.Current);
+                    }
+                }
+            }
+
+            return _layout.Children.Count;
+        }
+
         void OnItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 // Add new items to the layout
-                var index = e.NewStartingIndex;
                 foreach (var itemAdded in e.NewItems)
                 {
-                    _layout.Children.Insert(index++, CreateTemplatedView(itemAdded));
+                    var index = GetIndexForViewOfNewGroup(itemAdded);
+                    _layout.Children.Insert(index, CreateTemplatedView(itemAdded, IsGroupingEnabled ? GroupHeaderTemplate : ItemTemplate));
+                    if (IsGroupingEnabled)
+                    {
+                        var groupItem = itemAdded as INotifyCollectionChanged;
+                        if (groupItem != null)
+                        {
+                            groupItem.CollectionChanged += OnGroupItemCollectionChanged;
+                        }
+                    }
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Remove)
             {
                 // remove the deleted items from the layout
                 var index = e.OldStartingIndex;
+                foreach (var itemRemoved in e.OldItems)
+                {
+                    RemoveViewOfItem(itemRemoved);
+                    if (IsGroupingEnabled)
+                    {
+                        foreach (var child in itemRemoved as IEnumerable)
+                        {
+                            RemoveViewOfItem(child);
+                        }
+
+                        // Unbind CollectionChanged event handler
+                        var groupItem = itemRemoved as INotifyCollectionChanged;
+                        if (groupItem != null)
+                        {
+                            groupItem.CollectionChanged -= OnGroupItemCollectionChanged;
+                        }
+                    }
+                }
+            }
+            else if (e.Action == NotifyCollectionChangedAction.Reset)
+            {
+                if (IsGroupingEnabled)
+                {
+                    throw new Exception("Event handlers cannot be unhooked properly, please remove items one by one.");
+                }
+
+                // Remove all children
+                _layout.Children.Clear();
+            }
+        }
+
+        private View GetViewOfItem(object item)
+        {
+            return _layout.Children.FirstOrDefault(child => child.BindingContext == item);
+        }
+
+        private int GetIndexOfViewForItem(object item)
+        {
+            var viewGroupHeader = GetViewOfItem(item);
+            return _layout.Children.IndexOf(viewGroupHeader);
+        }
+
+        void OnGroupItemCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var idx = e.NewStartingIndex + GetIndexOfViewForItem(sender) + 1;
+                // Add new items to the layout
+                foreach (var itemAdded in e.NewItems)
+                {
+                    _layout.Children.Insert(idx++, CreateTemplatedView(itemAdded, ItemTemplate));
+                }
+            }
+            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                // remove the deleted items from the layout
                 foreach (var itemRemoved in e.OldItems)
                 {
                     var itemToRemove = _layout.Children.FirstOrDefault(view => view.BindingContext == itemRemoved);
@@ -178,14 +337,16 @@ namespace XLabs.Forms.Controls
             }
             else if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                // Remove all children
-                _layout.Children.Clear();
+                if (IsGroupingEnabled)
+                {
+                    throw new Exception("Event handlers cannot be unhooked properly, please remove items one by one.");
+                }
             }
         }
 
-        private View CreateTemplatedView(object item)
+        private View CreateTemplatedView(object item, DataTemplate template)
         {
-            if (ItemTemplate == null)
+            if (template == null)
             {
                 return new Label
                 {
@@ -194,11 +355,12 @@ namespace XLabs.Forms.Controls
                 };
             }
 
-            var templateContent = ItemTemplate.CreateContent();
-            var templatedItem = templateContent as Xamarin.Forms.ViewCell;
-            templatedItem.View.BindingContext = item;
+            var templatedCell = template.CreateContent() as Xamarin.Forms.ViewCell;
+            if (templatedCell == null)
+                throw new NotSupportedException("Only ViewCell based templates are supported currently.");
+            templatedCell.View.BindingContext = item;
 
-            return templatedItem.View;
+            return templatedCell.View;
         }
 
         private void RebuildLayout()
@@ -209,9 +371,20 @@ namespace XLabs.Forms.Controls
 
             foreach (var item in ItemsSource)
             {
-                var templatedItem = CreateTemplatedView(item);
+                var templatedItem = CreateTemplatedView(item, IsGroupingEnabled ? GroupHeaderTemplate : ItemTemplate);
                 _layout.Children.Add(templatedItem);
+                if (IsGroupingEnabled)
+                {
+                    // parse items inside the group
+                    // group has to be IEnumerable
+                    foreach (var itemInGroup in item as IEnumerable)
+                    {
+                        var templatedItemInGroup = CreateTemplatedView(itemInGroup, ItemTemplate);
+                        _layout.Children.Add(templatedItemInGroup);
+                    }
+                }
             }
         }
+
     }
 }

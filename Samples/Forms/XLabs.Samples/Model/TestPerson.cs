@@ -19,6 +19,8 @@
 // ***********************************************************************
 // 
 
+using System.Windows.Input;
+using Xamarin.Forms;
 using XLabs.Data;
 
 namespace XLabs.Samples.Model
@@ -69,6 +71,24 @@ namespace XLabs.Samples.Model
         public override string ToString()
         {
             return FirstName;
+        }
+
+        internal TestJob Job { get; set; }
+
+        public TestPerson()
+        {
+            RemoveCommand = new Command(() =>
+            {
+                if (Job != null)
+                {
+                    Job.Remove(this);
+                }
+            });
+        }
+
+        public ICommand RemoveCommand
+        {
+            get; private set;
         }
     }
 }

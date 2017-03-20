@@ -50,15 +50,16 @@ namespace XLabs.Samples
     {
         public App()
         {
+            InitializeComponent();
             Init();
             MainPage = GetMainPage();
         }
+
         /// <summary>
         /// Initializes the application.
         /// </summary>
         public static void Init()
         {
-
             var app = Resolver.Resolve<IXFormsApp>();
             if (app == null)
             {

@@ -4,34 +4,67 @@
              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="XLabs.Samples.Pages.Controls.WrapGridPage"
              Title="WrapGrid">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="PersonCellTemplate">
+                <TextCell Text="{Binding FirstName}" Detail="{Binding Age}" />
+            </DataTemplate>
+            <DataTemplate x:Key="PersonTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical" BackgroundColor="Lime">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding FirstName}" />
+                                <Label Text="{Binding LastName}" />
+                            </StackLayout>
+                            <Label Text="{Binding Age}" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RemoveCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="JobTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <controls:WrapLayout Orientation="Vertical" BackgroundColor="Fuchsia">
+                            <Label Text="{Binding Name}" />
+                            <Button Text="+" Command="{Binding AddPersonCommand}" />
+                            <controls:WrapLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RemoveCommand}" />
+                            </controls:WrapLayout.GestureRecognizers>
+                        </controls:WrapLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" Orientation="Vertical">
-                <controls:WrapGrid Orientation="Horizontal" ItemsSource="{Binding}">
-                    <controls:WrapGrid.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding FirstName}" />
-                                        <Label Text="{Binding LastName}" />
-                                        <Label Text="{Binding Age}" />
-                                    </StackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </controls:WrapGrid.ItemTemplate>
-                </controls:WrapGrid>
-                <Label Text="Label after WrapGrid" />
-            </StackLayout>
-            <StackLayout Grid.Row="1" Orientation="Horizontal">
-                <Button Text="Add new item" x:Name="ButtonAdd" />
-                <Button Text="Remove first item" x:Name="ButtonRemove" />
-            </StackLayout>
+            <ScrollView Grid.Row="0" BackgroundColor="Blue"
+                        Orientation="{Binding Orientation, Source={x:Reference MyGrid}, Converter={StaticResource InverseStackToScrollOrientationConverter}}">
+                <StackLayout Orientation="{Binding Orientation, Source={x:Reference MyGrid}, Converter={StaticResource InverseStackOrientationConverter}}">
+                    <controls:WrapGrid x:Name="MyGrid"
+                                       Orientation="Horizontal"
+                                       ItemsSource="{Binding Jobs}"
+                                       ItemTemplate="{StaticResource PersonTemplate}"
+                                       IsGroupingEnabled="True" GroupHeaderTemplate="{StaticResource JobTemplate}" />
+                    <Label Text="Label after WrapGrid" />
+                </StackLayout>
+            </ScrollView>
+            <controls:WrapLayout Grid.Row="1" Orientation="Horizontal">
+                <Button Text="Add job" Command="{Binding AddJobCommand}" />
+                <Switch IsToggled="{Binding IsGroupingEnabled, Source={x:Reference MyGrid}, Mode=TwoWay}" />
+                <Label Text="Grouping" />
+                <Button x:Name="ButtonOrientation" />
+            </controls:WrapLayout>
+            <Label Grid.Row="2" Text="Tap on an item to remove it." />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -307,4 +307,7 @@ namespace XLabs.Forms.Controls
         public object Model { get; set; }
     }
 
+    public class RepeaterView : RepeaterView<object>
+    {
+    }
 }
