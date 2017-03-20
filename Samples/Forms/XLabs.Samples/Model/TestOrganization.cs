@@ -21,12 +21,16 @@ namespace XLabs.Samples.Model
         {
             AddJobCommand = new Command(() =>
             {
-                // Add new assignment
-                Jobs.Add(new TestJob
+                var job = new TestJob
                 {
                     Name = _availableJobs[_random.Next(0, _availableJobs.Length)],
                     Organization = this
-                });
+                };
+                // maybe add some persons to the job
+                var numberOfPersons = _random.Next(0, 4);
+                for (var i = 0; i < numberOfPersons; i++)
+                    job.AddPerson();
+                Jobs.Add(job); // Add new job
             });
         }
 

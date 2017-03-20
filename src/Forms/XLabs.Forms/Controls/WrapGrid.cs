@@ -28,7 +28,7 @@ using Xamarin.Forms;
 namespace XLabs.Forms.Controls
 {
     /// <summary>
-    /// Class WrapGrid.
+    /// Templateable list view that arranges items using <see cref="WrapLayout"/>.
     /// </summary>
     public class WrapGrid : ContentView
     {
@@ -260,6 +260,7 @@ namespace XLabs.Forms.Controls
                     _layout.Children.Insert(index, CreateTemplatedView(itemAdded, IsGroupingEnabled ? GroupHeaderTemplate : ItemTemplate));
                     if (IsGroupingEnabled)
                     {
+                        AddGroupItems(itemAdded);
                         var groupItem = itemAdded as INotifyCollectionChanged;
                         if (groupItem != null)
                         {
@@ -312,6 +313,15 @@ namespace XLabs.Forms.Controls
         {
             var viewGroupHeader = GetViewOfItem(item);
             return _layout.Children.IndexOf(viewGroupHeader);
+        }
+
+        private void AddGroupItems(object group)
+        {
+            foreach (var itemInGroup in group as IEnumerable)
+            {
+                var templatedItemInGroup = CreateTemplatedView(itemInGroup, ItemTemplate);
+                _layout.Children.Add(templatedItemInGroup);
+            }
         }
 
         void OnGroupItemCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

@@ -277,7 +277,6 @@ namespace XLabs.Forms.Controls
 
                     xPos += region.Width + Spacing;
                 }
-
             }
         }
     }

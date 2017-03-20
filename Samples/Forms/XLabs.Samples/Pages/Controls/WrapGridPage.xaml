@@ -29,11 +29,12 @@
                 <ViewCell>
                     <ViewCell.View>
                         <controls:WrapLayout Orientation="Vertical" BackgroundColor="Fuchsia">
-                            <Label Text="{Binding Name}" />
-                            <Button Text="+" Command="{Binding AddPersonCommand}" />
-                            <controls:WrapLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RemoveCommand}" />
-                            </controls:WrapLayout.GestureRecognizers>
+                            <Label Text="{Binding Name}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RemoveCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Button Text="Add person" Command="{Binding AddPersonCommand}" />
                         </controls:WrapLayout>
                     </ViewCell.View>
                 </ViewCell>
@@ -47,7 +48,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ScrollView Grid.Row="0" BackgroundColor="Blue"
+            <ScrollView Grid.Row="0" BackgroundColor="#e6e6e6"
                         Orientation="{Binding Orientation, Source={x:Reference MyGrid}, Converter={StaticResource InverseStackToScrollOrientationConverter}}">
                 <StackLayout Orientation="{Binding Orientation, Source={x:Reference MyGrid}, Converter={StaticResource InverseStackOrientationConverter}}">
                     <controls:WrapGrid x:Name="MyGrid"

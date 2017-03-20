@@ -17,23 +17,25 @@ namespace XLabs.Samples.Model
 
         public TestJob()
         {
-            AddPersonCommand = new Command(() =>
-            {
-                // add new person
-                Add(new TestPerson
-                {
-                    Age = _random.Next(20, 80),
-                    FirstName = $"Joe #{Count + 1}",
-                    LastName = "Average",
-                    Job = this
-                });
-            });
+            AddPersonCommand = new Command(AddPerson);
             RemoveCommand = new Command(() =>
             {
                 if (Organization != null)
                 {
                     Organization.Jobs.Remove(this);
                 }
+            });
+        }
+
+        public void AddPerson()
+        {
+            // add new person
+            Add(new TestPerson
+            {
+                Age = _random.Next(20, 80),
+                FirstName = $"Joe #{Count + 1}",
+                LastName = "Average",
+                Job = this
             });
         }
 
