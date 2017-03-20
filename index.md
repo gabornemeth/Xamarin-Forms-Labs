@@ -5,6 +5,9 @@
 
 Call for action for all Xamarin Developers, embrace this project and share your controls and services with the community, add your own control to the toolkit.
 
+## NOTICE: This project is no longer officially maintained.
+**This is a private fork, which can be significantly differenct from the [original one](https://github.com/XLabs/Xamarin-Forms-Labs). It's focusing on the controls only. Right now recent NuGet packages can be grabbed from [MyGet](https://www.myget.org/F/gabornemeth/api/v3/index.json).**
+
 **Important for developers**
 The master branch is the current development branch and the next release for 2.0.
 The v.1.2 is the stable branch.
@@ -90,7 +93,7 @@ Xaml :
 
 Reference the assembly namespace 
 
-     xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+     xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
 
 Render your control:
 
@@ -245,11 +248,9 @@ __________________
 **Contribute**
 ------------------
 
-Everbody is welcome to contribute with any kind of controls or features at this time. Since there's no oficial releases feel free to submit your playground controls even if they aren't perfect. 
+Everbody is welcome to contribute. 
 
 Twitter hashtag : [#xflabs](https://twitter.com/search?q=xflabs)
-		
-		  
 		  
 _________________
 
@@ -272,4 +273,3 @@ License Apache 2.0 more about that in the [LICENSE][2] file.
   [2]: https://github.com/XForms/XForms-Toolkit/blob/master/LICENSE
   
   
-
