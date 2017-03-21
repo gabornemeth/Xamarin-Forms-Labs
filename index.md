@@ -8,32 +8,10 @@ Call for action for all Xamarin Developers, embrace this project and share your 
 ## NOTICE: This project is no longer officially maintained.
 **This is a private fork, which can be significantly differenct from the [original one](https://github.com/XLabs/Xamarin-Forms-Labs). It's focusing on the controls only. Right now recent NuGet packages can be grabbed from [MyGet](https://www.myget.org/F/gabornemeth/api/v3/index.json).**
 
-**Important for developers**
-The master branch is the current development branch and the next release for 2.0.
-The v.1.2 is the stable branch.
-
 **Available controls**
 
- - [AutoComplete (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/AutoComplete)
- - [Calendar Control (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Calendar-Control)
- - [Checkbox (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/Checkbox)
- - DynamicListView (beta)
- - ExtendedContentView (beta) 
- - [ExtendedEntry (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedEntry)
- - [ExtendedLabel (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedLabel)
- - ExtendedScrollView (IOS beta)
- - ExtendedTabbedPage  
- - [ExtendedTextCell (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedTextCell)
- - [ExtendedViewCell (beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/ExtendedViewCell)
- - [HybridWebView (alpha)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/HybridWebView)
- - GridView (IOS beta)
- - ImageButton (beta)
- - RepeaterView (beta)
- - [SegmentedControlView (IOS beta)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/SegmentedControl)
- - Web Image (beta) 
- - IconButton (IOS beta)
- - [CircleImage (IOS/Android anpha)](https://github.com/XForms/Xamarin-Forms-Labs/wiki/CircleImage)
-
+You can check the latest state of available controls [here](controls.md)
+ 
 **Available services (Beta)**
 
  - Accelerometer
@@ -65,23 +43,8 @@ The v.1.2 is the stable branch.
 _________________
 
 
-**HOW-TO**
+**Getting started**
 ======
-
-We are working in a great [wiki][1] on how to use the controls and services. 
-
-
-https://github.com/XForms/Xamarin-Forms-Labs/wiki
-
-
-
-Using the MVVM Helpers
------------
-
-**ViewFactory**
-Coming soon
-
-
 
 Using the controls
 -----------
@@ -238,13 +201,7 @@ __________________
  - Petr Klíma
  - Bart Kardol
  - [Nicholas Rogoff](http://blog.nicholasrogoff.com/) [@nrogoff](https://twitter.com/nrogoff)
-
  
-**Other Project Contributions:**
-------------------
-- Xamarin.Mobile
-
-
 **Contribute**
 ------------------
 
@@ -254,22 +211,7 @@ Twitter hashtag : [#xflabs](https://twitter.com/search?q=xflabs)
 		  
 _________________
 
-**CHAT**
-======
-
-[Xamarin Forms Labs Chat room online on Jabbr ](https://jabbr.net/#/rooms/Xamarin-Labs)
-
-__________________
-
 **License**
 ======
 
-License Apache 2.0 more about that in the [LICENSE][2] file. 
-
-
-
-
-  [1]: https://github.com/XForms/Xamarin-Forms-Labs/wiki
-  [2]: https://github.com/XForms/XForms-Toolkit/blob/master/LICENSE
-  
-  
+License Apache 2.0 more about that in the [LICENSE](https://github.com/gabornemeth/Xamarin-Forms-Labs/blob/master/LICENSE) file. 
