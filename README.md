@@ -59,4 +59,4 @@ _________________
 **License**
 ======
 
-License Apache 2.0 more about that in the [LICENSE][2] file. 
+License Apache 2.0 more about that in the [LICENSE](LICENSE) file. 
