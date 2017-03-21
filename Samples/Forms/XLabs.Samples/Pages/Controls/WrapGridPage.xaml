@@ -10,34 +10,26 @@
                 <TextCell Text="{Binding FirstName}" Detail="{Binding Age}" />
             </DataTemplate>
             <DataTemplate x:Key="PersonTemplate">
-                <ViewCell>
-                    <ViewCell.View>
-                        <StackLayout Orientation="Vertical" BackgroundColor="Lime">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding FirstName}" />
-                                <Label Text="{Binding LastName}" />
-                            </StackLayout>
-                            <Label Text="{Binding Age}" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RemoveCommand}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </ViewCell.View>
-                </ViewCell>
+                <StackLayout Orientation="Vertical" BackgroundColor="Lime">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding FirstName}" />
+                        <Label Text="{Binding LastName}" />
+                    </StackLayout>
+                    <Label Text="{Binding Age}" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RemoveCommand}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="JobTemplate">
-                <ViewCell>
-                    <ViewCell.View>
-                        <controls:WrapLayout Orientation="Vertical" BackgroundColor="Fuchsia">
-                            <Label Text="{Binding Name}">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding RemoveCommand}" />
-                                </Label.GestureRecognizers>
-                            </Label>
-                            <Button Text="Add person" Command="{Binding AddPersonCommand}" />
-                        </controls:WrapLayout>
-                    </ViewCell.View>
-                </ViewCell>
+                <controls:WrapLayout Orientation="Vertical" BackgroundColor="Fuchsia">
+                    <Label Text="{Binding Name}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RemoveCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Button Text="Add person" Command="{Binding AddPersonCommand}" />
+                </controls:WrapLayout>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>

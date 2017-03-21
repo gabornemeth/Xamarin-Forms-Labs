@@ -4,9 +4,9 @@
 // Created          : 03-17-2017
 // 
 // Last Modified By : XLabs Team
-// Last Modified On : 03-20-2017
+// Last Modified On : 03-21-2017
 // ***********************************************************************
-// <copyright file="GridView.cs" company="XLabs Team">
+// <copyright file="WrapGrid.cs" company="XLabs Team">
 //     Copyright (c) XLabs Team. All rights reserved.
 // </copyright>
 // <summary>
@@ -59,11 +59,11 @@ namespace XLabs.Forms.Controls
         {
             get
             {
-                return (bool)GetValue(WrapGrid.IsGroupingEnabledProperty);
+                return (bool)GetValue(IsGroupingEnabledProperty);
             }
             set
             {
-                base.SetValue(WrapGrid.IsGroupingEnabledProperty, value);
+                base.SetValue(IsGroupingEnabledProperty, value);
             }
         }
 
@@ -72,6 +72,7 @@ namespace XLabs.Forms.Controls
             var view = bindable as WrapGrid;
             if (view != null)
             {
+                // grouping is switched on or off, let's rebuild the whole layout
                 view.RebuildLayout();
             }
         }
@@ -118,9 +119,9 @@ namespace XLabs.Forms.Controls
             StackOrientation.Horizontal, BindingMode.OneWay, propertyChanged: OnOrientationChanged);
 
         /// <summary>
-        /// Gets or sets the items source.
+        /// Gets or sets the orientation.
         /// </summary>
-        /// <value>The items source.</value>
+        /// <value>The orientation.</value>
         public StackOrientation Orientation
         {
             get
@@ -139,7 +140,6 @@ namespace XLabs.Forms.Controls
             if (view != null)
             {
                 view._layout.Orientation = (StackOrientation)newvalue;
-                //view.RebuildLayout();
             }
         }
 
@@ -159,11 +159,11 @@ namespace XLabs.Forms.Controls
         {
             get
             {
-                return GetValue(WrapGrid.ItemsSourceProperty) as IEnumerable;
+                return GetValue(ItemsSourceProperty) as IEnumerable;
             }
             set
             {
-                base.SetValue(WrapGrid.ItemsSourceProperty, value);
+                base.SetValue(ItemsSourceProperty, value);
             }
         }
 
@@ -173,9 +173,9 @@ namespace XLabs.Forms.Controls
             if (view != null)
             {
                 if (oldvalue != null)
-                    view.Unbind(oldvalue);
+                    view.Unbind(oldvalue as IEnumerable);
                 if (newvalue != null)
-                    view.Bind(newvalue);
+                    view.Bind(newvalue as IEnumerable);
                 view.RebuildLayout();
             }
         }
@@ -211,20 +211,50 @@ namespace XLabs.Forms.Controls
             }
         }
 
-        private void Unbind(object items)
+        private void Unbind(IEnumerable items, NotifyCollectionChangedEventHandler handler)
         {
+            if (items == null)
+                return;
+
             var notifyCollectionChanged = items as INotifyCollectionChanged;
             if (notifyCollectionChanged != null)
-                notifyCollectionChanged.CollectionChanged -= OnItemsCollectionChanged;
+                notifyCollectionChanged.CollectionChanged -= handler;
         }
 
-        private void Bind(object items)
+        private void Bind(IEnumerable items, NotifyCollectionChangedEventHandler handler)
         {
+            if (items == null)
+                return;
+
             var notifyCollectionChanged = items as INotifyCollectionChanged;
             if (notifyCollectionChanged != null)
-                notifyCollectionChanged.CollectionChanged += OnItemsCollectionChanged;
+                notifyCollectionChanged.CollectionChanged += handler;
         }
 
+        private void Unbind(IEnumerable items)
+        {
+            Unbind(items, OnItemsCollectionChanged);
+            if (IsGroupingEnabled)
+            {
+                foreach (var item in items)
+                    Unbind(item as IEnumerable, OnGroupItemCollectionChanged);
+            }
+        }
+
+        private void Bind(IEnumerable items)
+        {
+            Bind(items, OnItemsCollectionChanged);
+            if (IsGroupingEnabled)
+            {
+                foreach (var item in items)
+                    Bind(item as IEnumerable, OnGroupItemCollectionChanged);
+            }
+        }
+
+        /// <summary>
+        /// Removes the view corresponding to the item.
+        /// </summary>
+        /// <param name="item">The item, the belonging view has to be removed.</param>
         private void RemoveViewOfItem(object item)
         {
             var itemToRemove = _layout.Children.FirstOrDefault(view => view.BindingContext == item);
@@ -232,6 +262,11 @@ namespace XLabs.Forms.Controls
                 _layout.Children.Remove(itemToRemove);
         }
 
+        /// <summary>
+        /// Determines the index where a new group's item has to be inserted into the layout
+        /// </summary>
+        /// <param name="item">The new group item.</param>
+        /// <returns></returns>
         private int GetIndexForViewOfNewGroup(object item)
         {
             var enumerator = ItemsSource.GetEnumerator();
@@ -261,11 +296,7 @@ namespace XLabs.Forms.Controls
                     if (IsGroupingEnabled)
                     {
                         AddGroupItems(itemAdded);
-                        var groupItem = itemAdded as INotifyCollectionChanged;
-                        if (groupItem != null)
-                        {
-                            groupItem.CollectionChanged += OnGroupItemCollectionChanged;
-                        }
+                        Bind(itemAdded as IEnumerable, OnGroupItemCollectionChanged);
                     }
                 }
             }
@@ -284,11 +315,7 @@ namespace XLabs.Forms.Controls
                         }
 
                         // Unbind CollectionChanged event handler
-                        var groupItem = itemRemoved as INotifyCollectionChanged;
-                        if (groupItem != null)
-                        {
-                            groupItem.CollectionChanged -= OnGroupItemCollectionChanged;
-                        }
+                        Unbind(itemRemoved as IEnumerable, OnGroupItemCollectionChanged);
                     }
                 }
             }
@@ -365,12 +392,12 @@ namespace XLabs.Forms.Controls
                 };
             }
 
-            var templatedCell = template.CreateContent() as Xamarin.Forms.ViewCell;
-            if (templatedCell == null)
-                throw new NotSupportedException("Only ViewCell based templates are supported currently.");
-            templatedCell.View.BindingContext = item;
+            var templatedView = template.CreateContent() as View;
+            if (templatedView == null)
+                throw new NotSupportedException("Only View based templates are supported.");
+            templatedView.BindingContext = item;
 
-            return templatedCell.View;
+            return templatedView;
         }
 
         private void RebuildLayout()
