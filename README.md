@@ -6,9 +6,6 @@
 ## NOTICE: This project is no longer officially maintained.
 **This is a private fork, which can be significantly differenct from the [original one](https://github.com/XLabs/Xamarin-Forms-Labs). It's focusing on the controls only. Recent NuGet packages can be grabbed from [MyGet](https://www.myget.org/F/gabornemeth/api/v3/index.json).**
 
-**Important for developers**
-The master branch is the current development branch.
-
 **Find a Bug or Fix a Bug** [Issue Tracker](https://github.com/gabornemeth/Xamarin-Forms-Labs/issues)
 
 Currently trying to build a usable documentation from existing wiki pages. Check it regularly [here](http://gabornemeth.github.io/Xamarin-Forms-Labs/)
@@ -51,6 +48,7 @@ __________________
 ------------------
 
 Everbody is welcome to contribute with code or adding documentation.
+If you would like to modify the source code, use the master branch as it is the current development branch. 
 
 Twitter hashtag : [#xflabs](https://twitter.com/search?q=xflabs)
           
