@@ -36,18 +36,23 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// Property Definition for the <see cref="Accuracy"/> Property
         /// </summary>
-        public static BindableProperty AccuracyProperty =BindableProperty.Create<GesturesContentView, float>(x=>x.Accuracy,5.0f,BindingMode.OneWay,(bo, val) => val >= 5 && val<=25);
+        public static readonly BindableProperty AccuracyProperty = BindableProperty.Create(
+            nameof(Accuracy), typeof(float), typeof(GesturesContentView), 5.0f,
+            validateValue: (bo, val) => (float)val >= 5 && (float)val <= 25);
 
         /// <summary>
         /// Property Definition for the Bindable <see cref="MinimumSwipeLength"/> property
         /// </summary>
-        public static BindableProperty MinimumSwipeLengthProperty =BindableProperty.Create<GesturesContentView, float>(x => x.MinimumSwipeLength,25,BindingMode.OneWay,(bo, val) => val >= 10);
+        public static readonly BindableProperty MinimumSwipeLengthProperty = BindableProperty.Create(
+            nameof(MinimumSwipeLength), typeof(float), typeof(GesturesContentView), 25,
+            validateValue: (bo, val) => (float)val >= 10);
 
         /// <summary>
         /// Property Definition for the exclude children property
         /// </summary>
         /// Element created at 08/11/2014,12:45 AM by Charles
-        public static BindableProperty ExcludeChildrenProperty = BindableProperty.Create<GesturesContentView, bool>(x => x.ExcludeChildren, true);
+        public static readonly BindableProperty ExcludeChildrenProperty = BindableProperty.Create(
+            nameof(ExcludeChildren), typeof(bool), typeof(GesturesContentView), true);
 
         /// <summary>
         /// Gets or sets a value indicating whether or not to exclude children views.
@@ -60,7 +65,7 @@ namespace XLabs.Forms.Controls
         public bool ExcludeChildren
         {
             get { return (bool)GetValue(ExcludeChildrenProperty); }
-            set { SetValue(ExcludeChildrenProperty,value);}
+            set { SetValue(ExcludeChildrenProperty, value); }
         }
 
         /// <summary>
@@ -71,7 +76,7 @@ namespace XLabs.Forms.Controls
         public float MinimumSwipeLength
         {
             get { return (float)GetValue(MinimumSwipeLengthProperty); }
-            set { SetValue(MinimumSwipeLengthProperty,value);}
+            set { SetValue(MinimumSwipeLengthProperty, value); }
         }
         /// <summary>
         /// The maximum distance a gesture origin point can be from
@@ -81,7 +86,7 @@ namespace XLabs.Forms.Controls
         public float Accuracy
         {
             get { return (float)GetValue(AccuracyProperty); }
-            set { SetValue(AccuracyProperty,value);}
+            set { SetValue(AccuracyProperty, value); }
         }
         /// <summary>
         /// Event that can be hooked from codebehind files.
@@ -89,7 +94,7 @@ namespace XLabs.Forms.Controls
         /// </summary>
         public event EventHandler<GestureResult> GestureRecognized;
 
-        private readonly List<ViewInterest> _viewInterests =new List<ViewInterest>();
+        private readonly List<ViewInterest> _viewInterests = new List<ViewInterest>();
 
         /// <summary>
         /// Utility function to locate a specific interest
@@ -97,7 +102,7 @@ namespace XLabs.Forms.Controls
         /// <param name="view">The view that has the interest</param>
         /// <param name="interestedin">The collection of <see cref="GestureInterest"/></param>
         /// <returns>A <see cref="ViewInterest"/></returns>
-        internal void RegisterInterests(View view,IEnumerable<GestureInterest>interestedin )
+        internal void RegisterInterests(View view, IEnumerable<GestureInterest> interestedin)
         {
             var vi = _viewInterests.FirstOrDefault(x => x.View == view);
             if (vi == null)
@@ -105,7 +110,7 @@ namespace XLabs.Forms.Controls
                 vi = new ViewInterest { View = view };
                 _viewInterests.Add(vi);
             }
-             vi.Interests=new List<GestureInterest>(interestedin.ToList());
+            vi.Interests = new List<GestureInterest>(interestedin.ToList());
             BindInterests(vi);
         }
 
@@ -116,12 +121,12 @@ namespace XLabs.Forms.Controls
 
         private void BindInterests(ViewInterest vi)
         {
-                var bc = FindBindingContext(vi.View);
-                foreach (var interest in vi.Interests)
-                {
-                        if (interest.BindingContext == null)
-                                interest.BindingContext = bc;
-                }
+            var bc = FindBindingContext(vi.View);
+            foreach (var interest in vi.Interests)
+            {
+                if (interest.BindingContext == null)
+                    interest.BindingContext = bc;
+            }
         }
 
         private object FindBindingContext(View view)
@@ -161,7 +166,7 @@ namespace XLabs.Forms.Controls
             {
                 //Check for match on the dominant axis
                 var horizontaldirection = gesture.HorizontalDistance < gesture.VerticalDistance
-                    ? Directionality.None :gesture.Direction & Directionality.HorizontalMask;
+                    ? Directionality.None : gesture.Direction & Directionality.HorizontalMask;
 
                 var verticaldirection = gesture.HorizontalDistance < gesture.VerticalDistance
                                               ? gesture.Direction & Directionality.VerticalMask
@@ -170,9 +175,9 @@ namespace XLabs.Forms.Controls
                 //Swap in the new direction so the user knows what the final match was
                 gesture.Direction = horizontaldirection | verticaldirection;
 
-                interest =interestedview.Interests.Where(x =>x.GestureType == gesture.GestureType &&
-                                                                              (x.Direction & Directionality.HorizontalMask)== horizontaldirection &&
-                                                                              (x.Direction & Directionality.VerticalMask) == verticaldirection).ToList();
+                interest = interestedview.Interests.Where(x => x.GestureType == gesture.GestureType &&
+                                                                               (x.Direction & Directionality.HorizontalMask) == horizontaldirection &&
+                                                                               (x.Direction & Directionality.VerticalMask) == verticaldirection).ToList();
             }
             //Winnow out the swipe gestures to match on either a perfect direction match (ie Up,Left) or based on the dominant axis
 
@@ -181,8 +186,8 @@ namespace XLabs.Forms.Controls
             if (!interest.Any()) return false;
             var final = interest.First();
             //Finish setting up our gestureresult
-            gesture.Origin=new Point(Math.Max(gesture.Origin.X-interestedview.View.X,0),Math.Max(gesture.Origin.Y-interestedview.View.Y,0));
-            SatisfyInterest(final,gesture);
+            gesture.Origin = new Point(Math.Max(gesture.Origin.X - interestedview.View.X, 0), Math.Max(gesture.Origin.Y - interestedview.View.Y, 0));
+            SatisfyInterest(final, gesture);
             return true;
         }
 
@@ -209,7 +214,7 @@ namespace XLabs.Forms.Controls
                 var candidates = _viewInterests.Where(v => v.View.Bounds.IntersectsWith(inflaterect)).ToList();
                 if (candidates.Any())
                 {
-                    originview = candidates.Count() == 1? candidates.First(): candidates.OrderBy(v => DistanceToClosestEdge(v.View.Bounds, point)).First();
+                    originview = candidates.Count() == 1 ? candidates.First() : candidates.OrderBy(v => DistanceToClosestEdge(v.View.Bounds, point)).First();
                 }
             }
             //check the originview for noninterested children that contain the point
@@ -221,13 +226,13 @@ namespace XLabs.Forms.Controls
         {
             //Distance from the top edge of the rectangle
             // ReSharper disable InconsistentNaming
-            var distAB = DistanceToEdge(pt, new Point(r.Left, r.Top),new Point(r.Left + r.Width, r.Top));
+            var distAB = DistanceToEdge(pt, new Point(r.Left, r.Top), new Point(r.Left + r.Width, r.Top));
             //Distance from the left edge of the rectangle
             var distAC = DistanceToEdge(pt, new Point(r.Left, r.Top), new Point(r.Left, r.Top + r.Height));
             //Distance from the bottom edge of the rectangle
-            var distCD = DistanceToEdge(pt,new Point(r.Left, r.Top + r.Height),new Point(r.Left + r.Width, r.Top + r.Height));
+            var distCD = DistanceToEdge(pt, new Point(r.Left, r.Top + r.Height), new Point(r.Left + r.Width, r.Top + r.Height));
             //Distance from the right edge of the rectable
-            var distBD = DistanceToEdge(pt,new Point(r.Left + r.Width, r.Top),new Point(r.Left + r.Width, r.Top + r.Height));
+            var distBD = DistanceToEdge(pt, new Point(r.Left + r.Width, r.Top), new Point(r.Left + r.Width, r.Top + r.Height));
             // ReSharper restore InconsistentNaming
 
             return Math.Min(distAB, Math.Min(distAC, Math.Min(distCD, distBD)));
@@ -246,11 +251,11 @@ namespace XLabs.Forms.Controls
         }
 
 
-        private void SatisfyInterest(GestureInterest gi,GestureResult args)
+        private void SatisfyInterest(GestureInterest gi, GestureResult args)
         {
-            var commandparam = gi.GestureParameter??args.StartView.BindingContext??BindingContext;
+            var commandparam = gi.GestureParameter ?? args.StartView.BindingContext ?? BindingContext;
             if (gi.GestureCommand != null && gi.GestureCommand.CanExecuteGesture(args, gi.GestureParameter))
-                gi.GestureCommand.ExecuteGesture(args,commandparam);
+                gi.GestureCommand.ExecuteGesture(args, commandparam);
             var handler = GestureRecognized;
             if (handler != null)
             {
@@ -278,7 +283,7 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// No notification
         /// </summary>
-        None=0,
+        None = 0,
         /// <summary>
         /// A short vibration of
         /// the device
@@ -295,31 +300,31 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// No direction
         /// </summary>
-        None=0,
+        None = 0,
         /// <summary>
         /// Swiping from Right to Left
         /// </summary>
-        Left=0x01,
+        Left = 0x01,
         /// <summary>
         /// Swiping from Left to Right
         /// </summary>
-        Right=0x02,
+        Right = 0x02,
         /// <summary>
         /// Swiping from Bottom to Top
         /// </summary>
-        Up=0x10,
+        Up = 0x10,
         /// <summary>
         /// Swiping from Top to Bottom
         /// </summary>
-        Down=0x20,
+        Down = 0x20,
         /// <summary>
         /// Mask to isolate the Horizontal component
         /// </summary>
-        HorizontalMask=0x0F,
+        HorizontalMask = 0x0F,
         /// <summary>
         /// Mask to isolate the Vertical component
         /// </summary>
-        VerticalMask=0xF0
+        VerticalMask = 0xF0
     }
     /// <summary>
     /// The base supported gestures
@@ -329,7 +334,7 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// No Gesture
         /// </summary>
-        Unknown=0,
+        Unknown = 0,
         /// <summary>
         /// Single tap
         /// </summary>

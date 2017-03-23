@@ -33,8 +33,7 @@ namespace XLabs.Forms.Controls
         /// Backing field for the orientation property.
         /// </summary>
         public static readonly BindableProperty TextAlignementProperty =
-            BindableProperty.Create<IconLabel, TextAlignment>(
-                p => p.TextAlignement, TextAlignment.Center);
+            BindableProperty.Create(nameof(TextAlignment), typeof(TextAlignment), typeof(IconLabel), TextAlignment.Center);
 
 
         /// <summary>
@@ -52,8 +51,7 @@ namespace XLabs.Forms.Controls
         /// Backing field for the orientation property.
         /// </summary>
         public static readonly BindableProperty OrientationProperty =
-            BindableProperty.Create<IconLabel, ImageOrientation>(
-                p => p.Orientation, ImageOrientation.ImageToLeft);
+            BindableProperty.Create(nameof(Orientation), typeof(ImageOrientation), typeof(IconLabel), ImageOrientation.ImageToLeft);
 
 
         /// <summary>
