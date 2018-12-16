@@ -1,3 +1,5 @@
+[![Build Status](https://app.bitrise.io/app/dfa8b259e47a3537/status.svg?token=l2BI1KKGCT5nwv9qWWtMGg&branch=develop)](https://app.bitrise.io/app/dfa8b259e47a3537)
+
 **Xamarin Forms Labs**
 =====================
 
