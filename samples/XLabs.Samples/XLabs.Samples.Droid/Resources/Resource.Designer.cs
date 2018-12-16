@@ -26,8 +26,6 @@ namespace XLabs.Samples.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::XLabs.Samples.Droid.Resource.String.ApplicationName;
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::XLabs.Samples.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::XLabs.Samples.Droid.Resource.Attribute.actionBarSize;
 			global::XLabs.Forms.Droid.Resource.Animation.abc_fade_in = global::XLabs.Samples.Droid.Resource.Animation.abc_fade_in;
 			global::XLabs.Forms.Droid.Resource.Animation.abc_fade_out = global::XLabs.Samples.Droid.Resource.Animation.abc_fade_out;

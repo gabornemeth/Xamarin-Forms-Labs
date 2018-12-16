@@ -24,7 +24,6 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Android.OS;
 using SQLite;
 using XLabs.Caching;
@@ -39,7 +38,6 @@ using XLabs.Platform.Services.Email;
 using XLabs.Platform.Services.Media;
 using XLabs.Serialization;
 using System.IO;
-using SQLite.Net.Platform.XamarinAndroid;
 using XLabs.Serialization.JsonNET;
 
 namespace XLabs.Samples.Droid

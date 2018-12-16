@@ -192,6 +192,10 @@
       <Project>{59ad9d73-9348-4262-a869-6168057da26a}</Project>
       <Name>XLabs.Forms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC\XLabs.IOC.csproj">
+      <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
+      <Name>XLabs.IOC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\Platform\XLabs.Platform.iOS\XLabs.Platform.iOS.csproj">
       <Project>{bbb5402c-92f6-4e2d-bd9f-5ca6eb79cf27}</Project>
       <Name>XLabs.Platform.iOS</Name>
@@ -205,6 +209,10 @@
     <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
       <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
       <Name>XLabs.Serialization.Json.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+      <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
+      <Name>XLabs.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\XLabs.Samples\XLabs.Samples.csproj">
       <Project>{3c2a9e36-2d18-4780-9c40-3213471b716c}</Project>
@@ -234,12 +242,6 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>3.0.0.446417</Version>
-    </PackageReference>
-    <PackageReference Include="XLabs.IoC">
-      <Version>2.3.2-pre04</Version>
-    </PackageReference>
-    <PackageReference Include="XLabs.Serialization">
-      <Version>2.3.2-pre04</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

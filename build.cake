@@ -55,7 +55,7 @@ Teardown((c) =>
 
 Task("Clean")
     .Description("Cleans all directories that are used during the build process.")
-		.WithCriteria(!skipBuild)
+	.WithCriteria(!skipBuild)
     .Does(() =>
 {
     // Clean solution directories.
