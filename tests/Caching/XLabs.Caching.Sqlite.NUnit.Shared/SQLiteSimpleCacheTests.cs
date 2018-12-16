@@ -1,12 +1,10 @@
 ﻿using System;
 using NUnit.Framework;
 using XLabs.Caching.SQLite;
-using SQLite.Net;
+using SQLite;
 using System.Collections.Generic;
-using SQLite.Net.Interop;
 using System.Linq;
 using System.Threading.Tasks;
-using SQLite.Net.Attributes;
 using XLabs.Caching.SQLiteTests.Mocks;
 
 

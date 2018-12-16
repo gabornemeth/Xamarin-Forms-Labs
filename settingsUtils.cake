@@ -1,4 +1,5 @@
 #addin "Cake.Json"
+#addin "Newtonsoft.Json"
 
 public class SettingsUtils
 {

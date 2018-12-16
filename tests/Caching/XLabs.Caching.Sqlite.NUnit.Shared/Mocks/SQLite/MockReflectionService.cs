@@ -1,5 +1,5 @@
 ﻿using System;
-using SQLite.Net.Interop;
+using SQLite;
 using System.Collections.Generic;
 using System.Reflection;
 

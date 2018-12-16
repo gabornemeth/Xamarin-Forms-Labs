@@ -75,7 +75,7 @@ namespace XLabs.Forms.Validation
 				{ typeof(Keyboard), new KeyboardTypeConverter() },
 				{ typeof(Point), new PointTypeConverter() },
 				{ typeof(Thickness), new ThicknessTypeConverter() },
-				{ typeof(Uri), new UriTypeConverter() },
+				{ typeof(Uri), new Xamarin.Forms.UriTypeConverter() },
 				{ typeof(WebViewSource), new WebViewSourceTypeConverter() }
 			};
 

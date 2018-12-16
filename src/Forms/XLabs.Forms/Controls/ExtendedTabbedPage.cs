@@ -285,7 +285,7 @@ namespace XLabs.Forms.Controls
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="Xamarin.Forms.PropertyChangingEventArgs" /> instance containing the event data.</param>
-        private void OnPropertyChanging(object sender, PropertyChangingEventArgs e)
+        private void OnPropertyChanging(object sender, Xamarin.Forms.PropertyChangingEventArgs e)
         {
             if (e.PropertyName == "CurrentPage")
             {

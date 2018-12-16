@@ -11,20 +11,16 @@
     <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package contains helpers to work with cryptography.</description>
-    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
-    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <summary>XLabs is a open source project that aims to provide a powerful and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Cryptography</tags>
   </metadata>
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Cryptography.Readme.md" target="content" -->
-	<!-- Assemblies: PCL Profile 259 + Xamarin -->
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-	
-    <!-- Assemblies: .NET Stanadard 1.0 -->
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\netstandard1.0" />
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\netstandard1.0" />
+    <!-- Assemblies: .NET Stanadard 2.0 -->
+    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\netstandard2.0\XLabs.Cryptography.dll" target="lib\netstandard2.0" />
+    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\netstandard2.0\XLabs.Cryptography.pdb" target="lib\netstandard2.0" />
   </files>
 </package>

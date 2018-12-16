@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>XLabs.Serialization</id>
+    <version>2.3.0-pre04</version>
+    <title>XLabs - Serialization</title>
+    <authors>XLabs Team</authors>
+    <owners>XLabs Team</owners>
+    <licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package implements the core Serialization provider contracts</description>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
+    <tags>Xamarin XLabs Serialization</tags>
+  </metadata>
+  <files>
+  	<!-- Assemblies: .NET Stanadard 2.0 -->
+    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\netstandard2.0\XLabs.Serialization.dll" target="lib\NETStandard2.0" />
+    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\netstandard2.0\XLabs.Serialization.pdb" target="lib\NETStandard2.0" />
+  </files>
+</package>

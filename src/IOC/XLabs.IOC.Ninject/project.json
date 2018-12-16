@@ -1,9 +1,0 @@
-﻿{
-  "supports": {},
-  "dependencies": {
-    "Portable.Ninject": "3.3.1"
-  },
-  "frameworks": {
-    ".NETPortable,Version=v4.5,Profile=Profile111": {}
-  }
-}

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Forms.Charting</id>
-    <version>2.3.2-pre02</version>
+    <version>3.0.0-pre02</version>
     <title>XLabs - Forms - Charting</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,8 +17,8 @@
     <tags>Xamarin XLabs Forms Charting</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Forms" version="2.3.2-pre02" />
-        <dependency id="Xamarin.Forms" version="2.3.0.107" />
+        <dependency id="XLabs.Forms" version="3.0.0-pre02" />
+        <dependency id="Xamarin.Forms" version="3.0.0.446417" />
       </group>
     </dependencies>
   </metadata>
@@ -26,36 +26,24 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Forms.Charting.Readme.md" target="content" -->
     <!-- Assemblies: PCL Profile 259 + Xamarin -->
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.dll" target="lib\portable-net45+win8+wpa81+monoandroid+MonoTouch+xamarinios10" />
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+MonoTouch+xamarinios10" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.dll" target="lib\netstandard2.0" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.pdb" target="lib\netstandard2.0" />
 
     <!-- Assemblies: Android -->
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.dll" target="lib\monoandroid" />
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.pdb" target="lib\monoandroid" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.dll" target="lib\monoandroid" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.pdb" target="lib\monoandroid" />
     <file src="..\src\Charting\XLabs.Forms.Charting.Droid\bin\$configuration$\XLabs.Forms.Charting.Droid.dll" target="lib\monoandroid" />
     <file src="..\src\Charting\XLabs.Forms.Charting.Droid\bin\$configuration$\XLabs.Forms.Charting.Droid.pdb" target="lib\monoandroid" />
 
     <!-- Assemblies: iOS -->
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.dll" target="lib\xamarinios10" />
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.pdb" target="lib\xamarinios10" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.dll" target="lib\xamarinios10" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.pdb" target="lib\xamarinios10" />
     <file src="..\src\Charting\XLabs.Forms.Charting.iOS\bin\$configuration$\XLabs.Forms.Charting.iOS.dll" target="lib\xamarinios10" />
     <file src="..\src\Charting\XLabs.Forms.Charting.iOS\bin\$configuration$\XLabs.Forms.Charting.iOS.pdb" target="lib\xamarinios10" />
 
-    <!-- Assemblies: Windows 8.1 -->
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.dll" target="lib\win8" />
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.pdb" target="lib\win8" />
-    <file src="..\src\Charting\XLabs.Forms.Charting.WinRT\bin\$configuration$\XLabs.Forms.Charting.WinRT.dll" target="lib\win8" />
-    <file src="..\src\Charting\XLabs.Forms.Charting.WinRT\bin\$configuration$\XLabs.Forms.Charting.WinRT.pdb" target="lib\win8" />
-
-    <!-- Assemblies: Winows Mobile 8.1 -->
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.dll" target="lib\wpa81" />
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.pdb" target="lib\wpa81" />
-    <file src="..\src\Charting\XLabs.Forms.Charting.WinRT.Phone\bin\$configuration$\XLabs.Forms.Charting.WinRT.Phone.dll" target="lib\wpa81" />
-    <file src="..\src\Charting\XLabs.Forms.Charting.WinRT.Phone\bin\$configuration$\XLabs.Forms.Charting.WinRT.Phone.pdb" target="lib\wpa81" />
-
     <!-- Assemblies: Universal Windows Platform -->
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.dll" target="lib\uap10.0" />
-    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\XLabs.Forms.Charting.pdb" target="lib\uap10.0" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.dll" target="lib\uap10.0" />
+    <file src="..\src\Charting\XLabs.Forms.Charting\bin\$configuration$\netstandard2.0\XLabs.Forms.Charting.pdb" target="lib\uap10.0" />
     <file src="..\src\Charting\XLabs.Forms.Charting.UWP\bin\$configuration$\XLabs.Forms.Charting.UWP.dll" target="lib\uap10.0" />
     <file src="..\src\Charting\XLabs.Forms.Charting.UWP\bin\$configuration$\XLabs.Forms.Charting.UWP.pdb" target="lib\uap10.0" />
   </files>

@@ -20,7 +20,8 @@
 // 
 
 using System;
-using Microsoft.Practices.Unity;
+using Unity;
+using Unity.Lifetime;
 
 namespace XLabs.Ioc.Unity
 {

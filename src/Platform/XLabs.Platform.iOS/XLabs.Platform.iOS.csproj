@@ -39,14 +39,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="XLabs.Core, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\XLabs.Core.2.3.2\lib\netstandard1.0\XLabs.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="XLabs.IOC, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\XLabs.IoC.2.3.2-pre04\lib\netstandard1.0\XLabs.IOC.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -91,8 +83,13 @@
     <Compile Include="Services\Reachability.cs" />
     <Compile Include="Services\SecureStorage.cs" />
     <Compile Include="Services\TextToSpeechService.cs" />
+    <Compile Include="Device\DisplaySize.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
+      <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>
@@ -100,9 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

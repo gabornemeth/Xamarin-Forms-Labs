@@ -192,43 +192,15 @@ namespace XLabs.Platform.Device
                     break;
             }
 
-            int width;
-            int height;
-            if (UIKit.UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-            {
-                // MainScreen.CurrentMode will reflect zoom mode on iOS8+
-                CGSize size = UIScreen.MainScreen.CurrentMode.Size;
-                if((Version == PhoneType.IPhone6 && size.Height == 1136) || (Version == PhoneType.IPhone6Plus && size.Height == 2001))
-                {
-                    width = (int)size.Width / (int)UIKit.UIScreen.MainScreen.Scale;
-                    height = (int)size.Height / (int)UIKit.UIScreen.MainScreen.Scale;
-                }
-                else
-                {
-                    CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.NativeBounds;
-                    width = (int)bounds.Width;
-                    height = (int)bounds.Height;
-                }
-            }
-            else
-            {
-                //All older devices are portrait by design so treat the default bounds as such
-                CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.Bounds;
-                width = System.Math.Min((int)bounds.Width, (int)bounds.Height);
-                height = System.Math.Max((int)bounds.Width, (int)bounds.Height);
-            }
-
-            width *= (int)UIKit.UIScreen.MainScreen.Scale;
-            height *= (int)UIKit.UIScreen.MainScreen.Scale;
-
+            var size = GetDisplaySize();
             double baseDPI = 163; //dpi from 1st Gen iPhone devices
-            double dpi = baseDPI * UIKit.UIScreen.MainScreen.Scale;
+            double dpi = baseDPI * size.Scale;
             if (Version == PhoneType.IPhone6Plus || Version == PhoneType.IPhone6SPlus)
             {
                 dpi = 401;
             }
 
-            Display = new Display(height, width, dpi, dpi);
+            Display = new Display(size.Height, size.Width, dpi, dpi);
 
             Name = HardwareVersion = Version.GetDescription();
         }

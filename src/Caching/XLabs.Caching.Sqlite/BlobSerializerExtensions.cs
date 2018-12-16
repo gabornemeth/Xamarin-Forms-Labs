@@ -18,13 +18,9 @@
 // </summary>
 // ***********************************************************************
 // 
-#region
 
 using System;
-using SQLite.Net;
 using XLabs.Serialization;
-
-#endregion
 
 namespace XLabs.Caching.SQLite
 {
@@ -38,10 +34,10 @@ namespace XLabs.Caching.SQLite
         /// </summary>
         /// <param name="serializer">Byte serializer.</param>
         /// <returns>IBlobSerializer</returns>
-        public static IBlobSerializer AsBlobSerializer(this IByteSerializer serializer)
-        {
-            return new BlobSerializerDelegate(serializer.SerializeToBytes, serializer.Deserialize, serializer.CanDeserialize);
-        }
+        //public static IBlobSerializer AsBlobSerializer(this IByteSerializer serializer)
+        //{
+        //    return new BlobSerializerDelegate(serializer.SerializeToBytes, serializer.Deserialize, serializer.CanDeserialize);
+        //}
 
         private static bool CanDeserialize(this IByteSerializer serializer, Type type)
         {

@@ -11,11 +11,12 @@
     <AssemblyName>XLabs.Platform.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RuntimeIdentifiers>win10-arm;win10-x86;win10-x64</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -103,10 +104,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="project.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Device\Accelerometer.cs" />
     <Compile Include="Device\AudioStream.cs" />
     <Compile Include="Device\Battery.cs" />
@@ -135,6 +132,14 @@
     <EmbeddedResource Include="Properties\XLabs.Platform.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
+      <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IOC\XLabs.IOC\XLabs.IOC.csproj">
+      <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
+      <Name>XLabs.IOC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XLabs.Platform\XLabs.Platform.csproj">
       <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>
@@ -145,6 +150,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fody">
+      <Version>1.29.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody">
+      <Version>1.51.3</Version>
+    </PackageReference>
+    <PackageReference Include="SharpDX.Direct2D1">
+      <Version>3.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="..\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems" Label="Shared" />
   <Import Project="..\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems" Label="Shared" />

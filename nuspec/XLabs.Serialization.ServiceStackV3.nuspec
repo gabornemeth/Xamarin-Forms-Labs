@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XLabs.Serialization.ServiceStackV3</id>
+    <version>3.0.0-pre02</version>
+    <title>XLabs - Serialization - ServiceStackV3</title>
+    <authors>XLabs Team</authors>
+    <owners>XLabs Team</owners>
+    <licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package implements the Serialization provider contracts via ServiceStack</description>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms (Android and iOS Support Only).</summary>
+    <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
+    <tags>Xamarin XLabs Serialization ServiceStack</tags>
+    <dependencies>
+      <group>
+        <dependency id="XLabs.Serialization" version="3.0.0-pre02" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- Assemblies: Android -->
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.Droid\bin\$configuration$\XLabs.Serialization.ServiceStackV3.Droid.dll" target="lib\monoandroid" />
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.Droid\bin\$configuration$\XLabs.Serialization.ServiceStackV3.Droid.pdb" target="lib\monoandroid" />
+
+    <!-- Assemblies: iOS -->
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.iOS\bin\$configuration$\XLabs.Serialization.ServiceStackV3.iOS.dll" target="lib\xamarinios" />
+    <file src="..\src\Serialization\XLabs.Serialization.ServiceStack.iOS\bin\$configuration$\XLabs.Serialization.ServiceStackV3.iOS.pdb" target="lib\xamarinios" />
+  </files>
+</package>

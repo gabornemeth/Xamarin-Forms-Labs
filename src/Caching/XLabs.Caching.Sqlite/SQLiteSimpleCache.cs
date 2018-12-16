@@ -20,10 +20,7 @@
 // 
 #region
 
-using SQLite.Net;
-using SQLite.Net.Async;
-using SQLite.Net.Attributes;
-using SQLite.Net.Interop;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,14 +52,14 @@ namespace XLabs.Caching.SQLite
         /// Initializes a new instance of the <see cref="SQLiteSimpleCache" /> class.
         /// </summary>
         /// <param name="platform">SQLite platform.</param>
-        /// <param name="connection">SQLite connection string.</param>
+        /// <param name="connectionString">SQLite connection string.</param>
         /// <param name="defaultSerializer">Byte serializer to use.</param>
-        public SQLiteSimpleCache(ISQLitePlatform platform, SQLiteConnectionString connection, IByteSerializer defaultSerializer)
-            : base(platform, connection)
+        public SQLiteSimpleCache(SQLiteConnectionString connectionString, SQLiteOpenFlags openFlags, IByteSerializer defaultSerializer)
+            : base(connectionString, openFlags)
         {
             CreateTable<SQliteCacheTable>();
             _serializer = defaultSerializer;
-            _asyncConnection = new SQLiteAsyncConnection(() => this);
+            _asyncConnection = new SQLiteAsyncConnection(this.DatabasePath);
         }
 
         #region ICacheProvider Members

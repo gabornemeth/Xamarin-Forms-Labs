@@ -1,5 +1,5 @@
 ﻿using System;
-using SQLite.Net.Interop;
+using SQLite;
 
 namespace XLabs.Caching.SQLiteTests.Mocks
 {

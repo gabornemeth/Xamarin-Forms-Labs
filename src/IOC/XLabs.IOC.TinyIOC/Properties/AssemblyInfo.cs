@@ -18,12 +18,8 @@
 // </summary>
 // ***********************************************************************
 // 
-#region
-
 using System.Reflection;
 using System.Resources;
-
-#endregion
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -33,8 +29,6 @@ using System.Resources;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
-
-#if _USE_INDIVIDUAL_ASSEMBLYINFO
 [assembly: AssemblyCompany("XLabs Team")]
 [assembly: AssemblyProduct("XLabs")]
 [assembly: AssemblyCopyright("Copyright © XLabs Team 2016")]
@@ -50,7 +44,4 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.*")]
-
-//[assembly: AssemblyFileVersion("2.0.*")]
-#endif
+[assembly: AssemblyVersion("3.0.0")]

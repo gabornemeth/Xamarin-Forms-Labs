@@ -11,6 +11,7 @@
     <AssemblyName>NunitTests</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,6 +88,9 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -96,7 +100,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h@2x.png" />
@@ -117,98 +120,35 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.1.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Autofac.4.1.1\lib\netstandard1.1\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ExifLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\ExifLib.PCL.1.0.2-pre01\lib\netstandard1.0\ExifLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Portable.Ninject.3.3.1\lib\Xamarin.iOS\Ninject.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.0.5813.39035, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\NUnit.3.0.1\lib\dotnet\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.runner.iOS, Version=3.0.5815.33123, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\nunit.xamarin.3.0.1\lib\Xamarin.iOS\nunit.runner.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Settings, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Settings.Abstractions, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="protobuf-net, Version=2.1.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\protobuf-net.2.1.0\lib\netstandard1.5\protobuf-net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector, Version=3.2.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\SimpleInjector.3.2.2\lib\netstandard1.0\SimpleInjector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLite.Net.Async, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\SQLite.Net.Async-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.Async.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Reflection.Emit, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\System.Reflection.Emit.4.0.1\lib\netstandard1.3\System.Reflection.Emit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Emit.ILGeneration, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\System.Reflection.Emit.ILGeneration.4.0.1\lib\netstandard1.3\System.Reflection.Emit.ILGeneration.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Emit.Lightweight, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\System.Reflection.Emit.Lightweight.4.0.1\lib\netstandard1.3\System.Reflection.Emit.Lightweight.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\src\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>9.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit">
+      <Version>3.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="nunit.xamarin">
+      <Version>3.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>2.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>3.0.0.446417</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reflection.Emit">
+      <Version>4.3.0</Version>
+      <ExcludeAssets>all</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
@@ -235,11 +175,13 @@
       <Project>{95559c0f-3aba-4d68-8e3e-5b9230887ed1}</Project>
       <Name>XLabs.IOC.Ninject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.TinyIOC.iOS\XLabs.IOC.TinyIOC.iOS.csproj">
-      <Project>{68e59ea0-b902-43b9-9b40-9f10fe8bfca0}</Project>
-      <Name>XLabs.IOC.TinyIOC.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
+      <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
+      <Name>XLabs.IOC.SimpleInjector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.TinyIOC\XLabs.IOC.TinyIOC.csproj">
+      <Project>{89ca26b4-e685-4228-bab3-653d92616d47}</Project>
+      <Name>XLabs.IOC.TinyIOC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
       <Project>{e426afa6-c141-4a21-963d-ff5a7a111757}</Project>
@@ -277,33 +219,14 @@
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XLabs.NUnit\XLabs.NUnit.csproj">
+      <Project>{9f1ad4c3-4162-4bd0-bf6a-9ba6d6a4fde4}</Project>
+      <Name>XLabs.NUnit</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppDelegate.cs.txt" />
   </ItemGroup>
-  <Import Project="..\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Caching\XLabs.Caching.Sqlite.NUnit.Shared\XLabs.Caching.Sqlite.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Charting\XLabs.Forms.Charting.NUnit.Shared\XLabs.Forms.Charting.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Forms\XLabs.Forms.NUnit.Shared\XLabs.Forms.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.Autofac.NUnit.Shared\XLabs.IOC.Autofac.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.Ninject.NUnit.Shared\XLabs.IOC.Ninject.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.SimpleInjector.NUnit.Shared\XLabs.IOC.SimpleInjector.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.TinyIOC.NUnit.Shared\XLabs.IOC.TinyIOC.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.Unity.NUnit.Shared\XLabs.IOC.Unity.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Serialization\XLabs.Serialization.JsonNet.NUnit.Shared\XLabs.Serialization.JsonNet.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Serialization\XLabs.Serialization.ProtoBuf.NUnit.Shared\XLabs.Serialization.ProtoBuf.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Serialization\XLabs.Serialization.ServiceStack.NUnit.Shared\XLabs.Serialization.ServiceStack.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\..\src\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\src\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\src\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\src\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
-  </Target>
 </Project>

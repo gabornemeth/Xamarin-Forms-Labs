@@ -189,7 +189,6 @@ ClientBin/
 *~
 *.dbmdl
 *.dbproj.schemaview
-*.pfx
 *.publishsettings
 node_modules/
 orleans.codegen.cs
@@ -253,8 +252,4 @@ paket-files/
 *.sln.iml
 
 # CAKE
-tools/Addins/
-tools/Cake/
-tools/GitVersion.CommandLine
-tools/NUnit.ConsoleRunner
-tools/nuget.exe
+tools/

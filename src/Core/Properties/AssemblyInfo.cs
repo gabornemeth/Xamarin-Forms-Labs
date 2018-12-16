@@ -30,7 +30,7 @@ using System.Resources;
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion("2.3.2")]
+[assembly: AssemblyVersion("1.0.0")]
 #if _USE_INDIVIDUAL_ASSEMBLYINFO
 [assembly: AssemblyCompany("XLabs Team")]
 [assembly: AssemblyProduct("XLabs")]
@@ -47,7 +47,7 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2.3.2")]
+[assembly: AssemblyVersion("1.0.0")]
 
-//[assembly: AssemblyFileVersion("2.3.2")]
+//[assembly: AssemblyFileVersion("1.0.0")]
 #endif

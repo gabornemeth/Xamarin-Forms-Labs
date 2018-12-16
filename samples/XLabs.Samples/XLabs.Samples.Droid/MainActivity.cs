@@ -26,7 +26,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using SQLite.Net;
+using SQLite;
 using XLabs.Caching;
 using XLabs.Caching.SQLite;
 using XLabs.Forms;
@@ -111,8 +111,9 @@ namespace XLabs.Samples.Droid
                 .Register<IXFormsApp>(app)
                 .Register<ISecureStorage>(t => new KeyVaultStorage(t.Resolve<IDevice>().Id.ToCharArray()))
                 .Register<ICacheProvider>(
-                    t => new SQLiteSimpleCache(new SQLitePlatformAndroid(),
-                        new SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()));
+                    t => new SQLiteSimpleCache(
+                        new SQLiteConnectionString(pathToDatabase, true, null), SQLiteOpenFlags.ReadWrite,
+                        t.Resolve<IJsonSerializer>()));
 
 
             Resolver.SetResolver(resolverContainer.GetResolver());

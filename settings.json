@@ -8,7 +8,7 @@
 	},
 	"build": {
 		"SourcePath": "./src",
-		"SolutionFileSpec": "./src/XLabs.Forms.sln",
+		"SolutionFileSpec": "./src/XLabs.Framework.sln",
 		"TreatWarningsAsErrors": false,
 		"EnableXamarinIOS": false,
 		"MacAgentIPAddress": "",

@@ -1,9 +1,9 @@
 ﻿using System;
-using SQLite.Net.Interop;
+using global::SQLite;
 
 namespace XLabs.Caching.SQLiteTests.Mocks
 {
-	public class MockSqlLiteProvider:ISQLitePlatform
+	public class MockSqlLiteProvider : ISQLitePlatform
 	{
 		#region ISQLitePlatform implementation
 

@@ -33,11 +33,9 @@ namespace XLabs.Platform.Device
 		/// </summary>
 		internal Simulator()
 		{
-			var b = UIScreen.MainScreen.Bounds;
-			var h = b.Height * UIScreen.MainScreen.Scale;
-			var w = b.Width * UIScreen.MainScreen.Scale;
-			var dpi = UIScreen.MainScreen.Scale * 163;
-			Display = new Display((int)h, (int)w, dpi, dpi);
+            var size = GetDisplaySize();
+            var dpi = size.Scale * 163;
+            Display = new Display(size.Height, size.Width, dpi, dpi);
 
 			Name = HardwareVersion = "Simulator";
 		}

@@ -9,7 +9,6 @@
     <Import_RootNamespace>XLabs.Caching.NUnit.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)BlobSerializerExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mocks\Xlabs\MockByteSerializer.cs" />
   </ItemGroup>
 </Project>

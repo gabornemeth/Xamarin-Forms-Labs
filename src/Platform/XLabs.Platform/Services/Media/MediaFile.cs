@@ -123,7 +123,7 @@ namespace XLabs.Platform.Services.Media
 		/// </summary>
 		/// <value>The exif.</value>
 		/// <exception cref="System.ObjectDisposedException">null</exception>
-		public JpegInfo Exif
+		public byte[] Exif
 		{
 			get
 			{
@@ -132,7 +132,11 @@ namespace XLabs.Platform.Services.Media
 					throw new ObjectDisposedException(null);
 				}
 
-				var result = ExifReader.ReadJpeg(Source);
+                byte[] result = null;
+                using (var reader = new ExifReader(Source))
+                {
+                    result = reader.GetJpegThumbnailBytes();
+                }
 
 				Source.Seek(0, SeekOrigin.Begin);
 

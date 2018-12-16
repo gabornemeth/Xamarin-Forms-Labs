@@ -11,13 +11,14 @@
     <AssemblyName>XLabs.NUnit.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>..\XLabs.Tests.pfx</PackageCertificateKeyFile>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,8 +92,6 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -173,9 +172,9 @@
       <Project>{6E550F02-4666-4D37-962F-D2A990E9F2A7}</Project>
       <Name>XLabs.IOC.SimpleInjector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.TinyIOC.UWP\XLabs.IOC.TinyIOC.UWP.csproj">
-      <Project>{cec89311-8922-4bcd-a3a4-bdd87f727809}</Project>
-      <Name>XLabs.IOC.TinyIOC.UWP</Name>
+    <ProjectReference Include="..\..\src\IOC\XLabs.IOC.TinyIOC\XLabs.IOC.TinyIOC.csproj">
+      <Project>{89ca26b4-e685-4228-bab3-653d92616d47}</Project>
+      <Name>XLabs.IOC.TinyIOC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
       <Project>{e426afa6-c141-4a21-963d-ff5a7a111757}</Project>
@@ -201,21 +200,34 @@
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XLabs.NUnit\XLabs.NUnit.csproj">
+      <Project>{9f1ad4c3-4162-4bd0-bf6a-9ba6d6a4fde4}</Project>
+      <Name>XLabs.NUnit</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Caching\XLabs.Caching.Sqlite.NUnit.Shared\XLabs.Caching.Sqlite.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Charting\XLabs.Forms.Charting.NUnit.Shared\XLabs.Forms.Charting.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Forms\XLabs.Forms.NUnit.Shared\XLabs.Forms.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.Autofac.NUnit.Shared\XLabs.IOC.Autofac.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.Ninject.NUnit.Shared\XLabs.IOC.Ninject.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.SimpleInjector.NUnit.Shared\XLabs.IOC.SimpleInjector.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Serialization\XLabs.Serialization.JsonNet.NUnit.Shared\XLabs.Serialization.JsonNet.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\Serialization\XLabs.Serialization.ServiceStack.NUnit.Shared\XLabs.Serialization.ServiceStack.NUnit.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>9.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit">
+      <Version>3.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="nunit.xamarin">
+      <Version>3.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>2.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>3.0.0.446417</Version>
+    </PackageReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -34,7 +34,7 @@ using XLabs.Platform.Services.Media;
 
 namespace XLabs.Platform.Device
 {
-	/// <summary>
+    /// <summary>
     /// Apple device base class.
     /// </summary>
     public abstract class AppleDevice : IDevice
@@ -102,7 +102,7 @@ namespace XLabs.Platform.Device
 
             this.MediaPicker = new MediaPicker();
 
-            this.Network = new Network();
+            this.Network = new Services.Network();
         }
 
         /// <summary>
@@ -390,6 +390,7 @@ namespace XLabs.Platform.Device
 
             return launchTaskSource.Task;
         }
+
         #endregion
 
         /// <summary>
@@ -431,6 +432,31 @@ namespace XLabs.Platform.Device
             sysctl(mib, 2, out mem, ref oldlenp, IntPtr.Zero, 0);
 
             return mem;
+        }
+
+        protected DisplaySize GetDisplaySize()
+        {
+            if (UIKit.UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            {
+                CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.NativeBounds;
+                return new DisplaySize
+                {
+                    Width = (int)bounds.Width,
+                    Height = (int)bounds.Height,
+                    Scale = (float)UIScreen.MainScreen.NativeScale
+                };
+            }
+            else
+            {
+                //All older devices are portrait by design so treat the default bounds as such
+                CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.Bounds;
+                return new DisplaySize
+                {
+                    Width = System.Math.Min((int)bounds.Width, (int)bounds.Height),
+                    Height = System.Math.Max((int)bounds.Width, (int)bounds.Height),
+                    Scale = (float)UIScreen.MainScreen.Scale
+                };
+            }
         }
     }
 }

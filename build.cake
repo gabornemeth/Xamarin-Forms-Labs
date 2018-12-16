@@ -3,6 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.5.0
+
 #l "versionUtils.cake"
 #l "settingsUtils.cake"
 
@@ -12,7 +13,7 @@
 
 var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
-var settingsFile = Argument<string>("settingsFile", ".\\settings_notexist.json");
+var settingsFile = Argument<string>("settingsFile", ".\\settings.json");
 var skipBuild = Argument<string>("skipBuild", "false").ToLower() == "true" || Argument<string>("skipBuild", "false") == "1";
 
 var buildSettings = SettingsUtils.LoadSettings(Context, settingsFile);
@@ -98,23 +99,28 @@ Task("CleanPackages")
 
 Task("Restore")
     .Description("Restores all the NuGet packages that are used by the specified solution.")
-		.WithCriteria(!skipBuild)
+	.WithCriteria(!skipBuild)
     .Does(() =>
 {
     // Restore all NuGet packages.
     foreach(var solution in solutions)
     {
         Information("Restoring {0}...", solution);
-        NuGetRestore(solution, new NuGetRestoreSettings { ConfigFile = buildSettings.Build.NugetConfigPath });
+		var restoreSettings = new NuGetRestoreSettings {
+			 ConfigFile = buildSettings.Build.NugetConfigPath,
+			 ToolPath = new FilePath("./.nuget/nuget.exe")
+		};
+		Information("Nuget path: {0}", restoreSettings.ToolPath);
+        NuGetRestore(solution, restoreSettings);
     }
 });
 
 Task("Build")
     .Description("Builds all the different parts of the project.")
-		.WithCriteria(!skipBuild)
+	.WithCriteria(!skipBuild)
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
-		.IsDependentOn("UpdateVersion")
+	.IsDependentOn("UpdateVersion")
     .Does(() =>
 {
 	if (buildSettings.Version.AutoIncrementVersion)
@@ -130,10 +136,14 @@ Task("Build")
 			MaxCpuCount = 1,
 			Configuration = configuration,
 			PlatformTarget = PlatformTarget.MSIL,
-//			ToolPath = @"c:\Program Files (x86)\MSBuild\14.0\bin\msbuild.exe",
+			ToolVersion = MSBuildToolVersion.VS2017,
+			ToolPath = @"c:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe",
+			MSBuildPlatform = (Cake.Common.Tools.MSBuild.MSBuildPlatform)1,
 //			Verbosity = Verbosity.Diagnostic
 		}.WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
 		 .WithTarget("Build");
+
+		msBuildSettings.WithProperty("AppxPackage", "false");
 
 		if (buildSettings.Build.EnableXamarinIOS)
 		{
@@ -161,7 +171,8 @@ Task("Run-Unit-Tests")
 
 Task("Package")
     .Description("Packages all nuspec files into nupkg packages.")
-    .IsDependentOn("Run-Unit-Tests")
+    .IsDependentOn("Build")
+    //.IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
 	var artifactsPath = Directory(buildSettings.NuGet.ArtifactsPath);
@@ -172,7 +183,6 @@ Task("Package")
 	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec).OrderBy(filePath => filePath.FullPath.Length);
 	foreach(var nsf in nuspecFiles)
 	{
-
 		Information("Packaging {0}", nsf);
 
 		if (buildSettings.NuGet.UpdateVersion) {

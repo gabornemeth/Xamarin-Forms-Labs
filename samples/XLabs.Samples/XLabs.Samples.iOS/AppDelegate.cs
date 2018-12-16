@@ -20,8 +20,7 @@
 //
 
 using Foundation;
-using SQLite.Net;
-using SQLite.Net.Platform.XamarinIOS;
+using SQLite;
 using System.IO;
 using UIKit;
 using XLabs.Caching.SQLite;
@@ -34,14 +33,12 @@ using XLabs.Platform.Services;
 using XLabs.Platform.Services.Email;
 using XLabs.Platform.Services.Media;
 
-namespace XLabs.Samples.iOS
-{
+namespace XLabs.Samples.iOS {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : XFormsApplicationDelegate
-    {
+    public partial class AppDelegate : XFormsApplicationDelegate {
         //
         // This method is invoked when the application has loaded and is ready to run. In this
         // method you should instantiate the window, load the UI into it and then make the window
@@ -94,8 +91,9 @@ namespace XLabs.Samples.iOS
                 .Register<ISecureStorage, SecureStorage>()
                 .Register<global::XLabs.Ioc.IDependencyContainer>(t => resolverContainer)
                 .Register<global::XLabs.Caching.ICacheProvider>(
-                    t => new SQLiteSimpleCache(new SQLitePlatformIOS(),
-                        new SQLiteConnectionString(pathToDatabase, true), t.Resolve<global::XLabs.Serialization.IJsonSerializer>()));
+                    t => new SQLiteSimpleCache(new SQLiteConnectionString(pathToDatabase, true, null),
+                    SQLiteOpenFlags.ReadWrite,
+                    t.Resolve<global::XLabs.Serialization.IJsonSerializer>()));
 
             XLabs.Ioc.Resolver.SetResolver(resolverContainer.GetResolver());
         }
