@@ -137,7 +137,6 @@ Task("Build")
 			Configuration = configuration,
 			PlatformTarget = PlatformTarget.MSIL,
 			ToolVersion = MSBuildToolVersion.VS2017,
-			ToolPath = @"c:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe",
 			MSBuildPlatform = (Cake.Common.Tools.MSBuild.MSBuildPlatform)1,
 //			Verbosity = Verbosity.Diagnostic
 		}.WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
