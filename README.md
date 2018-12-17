@@ -10,7 +10,7 @@
 
 **Find a Bug or Fix a Bug** [Issue Tracker](https://github.com/gabornemeth/Xamarin-Forms-Labs/issues)
 
-Currently trying to build a usable documentation from existing wiki pages. Check it regularly [here](http://gabornemeth.github.io/Xamarin-Forms-Labs/)
+Documentation will be available [here](http://gabornemeth.github.io/Xamarin-Forms-Labs/)
  
 __________________
 
