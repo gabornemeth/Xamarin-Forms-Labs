@@ -1,4 +1,4 @@
-[![Build Status](https://app.bitrise.io/app/dfa8b259e47a3537/status.svg?token=l2BI1KKGCT5nwv9qWWtMGg&branch=develop)](https://app.bitrise.io/app/dfa8b259e47a3537)
+[![Build status](https://nrglabz.visualstudio.com/Xamarin-Forms-Labs/_apis/build/status/Xamarin-Forms-Labs-CI)](https://nrglabz.visualstudio.com/Xamarin-Forms-Labs/_build/latest?definitionId=13)
 
 **Xamarin Forms Labs**
 =====================
