@@ -17,10 +17,26 @@ __________________
 **Nuget**
 ======
 
-Add [this MyGet feed](https://www.myget.org/F/gabornemeth/api/v3/index.json) to your package sources, and then you can find the latest packages of
-- XLabs.Forms
-- XLabs.Platform
- 
+Package name | [MyGet](https://www.myget.org/F/gabornemeth/api/v3/index.json) feed
+-------------|-------------
+XLabs.Caching | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Caching.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Caching)
+XLabs.Caching.Net45 | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Caching.Net45.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Caching.Net45)
+XLabs.Caching.SQLite | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Caching.SQLite.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Caching.SQLite)
+XLabs.Core | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Core.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Core)
+XLabs.Cryptography | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Cryptography.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Cryptography)
+XLabs.Forms | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Forms.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Forms)
+XLabs.Forms.Charting | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Forms.Charting.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Forms.Charting)
+XLabs.IoC | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.IoC.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.IoC)
+XLabs.IoC.Autofac | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.IoC.Autofac.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.IoC.Autofac)
+XLabs.IoC.NInject | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.IoC.NInject.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.IoC.NInject)
+XLabs.IoC.SimpleInjector | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.IoC.SimpleInjector.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.IoC.SimpleInjector)
+XLabs.IoC.TinyIOC | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.IoC.TinyIOC.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.IoC.TinyIOC)
+XLabs.IoC.Unity | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.IoC.Unity.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.IoC.Unity)
+XLabs.Platform | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Platform.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Platform)
+XLabs.Serialization | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Serialization.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Serialization)
+XLabs.Serialization.ProtoBuf | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Serialization.ProtoBuf.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Serialization.ProtoBuf)
+XLabs.Serialization.ServiceStackV3 | [![MyGet](https://img.shields.io/myget/gabornemeth/vpre/XLabs.Serialization.ServiceStackV3.svg?style=flat-square&label=myget)](https://myget.org/feed/gabornemeth/package/nuget/XLabs.Serialization.ServiceStackV3)
+
 __________________
 
 **Contributions:**
