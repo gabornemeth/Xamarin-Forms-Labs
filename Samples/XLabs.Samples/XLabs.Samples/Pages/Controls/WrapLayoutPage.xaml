@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="XLabs.Samples.Pages.Controls.WrapLayoutPage"
+             x:Name="Page">
+    <StackLayout Orientation="Vertical" HorizontalOptions="Fill">
+
+        <Label Text="Item spacing" />
+        <Stepper Value="{Binding Source={x:Reference Page}, Path=Spacing, Mode=TwoWay}" Minimum="1" Maximum="50" />
+
+        <Label Text="WrapLayout" />
+        <controls:WrapLayout Orientation="Horizontal" x:Name="Layout" Spacing="{Binding Source={x:Reference Page}, Path=Spacing}" />
+
+        <Label Text="WrapGrid without ItemTemplate" />
+        <controls:WrapGrid ItemsSource="{Binding Items}" ItemSpacing="{Binding Source={x:Reference Page}, Path=Spacing}" />
+
+        <Label Text="WrapGrid with ItemTemplate" />
+        <controls:WrapGrid ItemsSource="{Binding Items}" ItemSpacing="{Binding Source={x:Reference Page}, Path=Spacing}">
+            <controls:WrapGrid.ItemTemplate>
+                <DataTemplate>
+                    <Label FontAttributes="Bold" Text="{Binding Text}" FontSize="{Binding Size}"
+                           BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding Color}" />
+                </DataTemplate>
+            </controls:WrapGrid.ItemTemplate>
+        </controls:WrapGrid>
+        
+    </StackLayout>
+</ContentPage>

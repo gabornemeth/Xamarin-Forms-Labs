@@ -145,6 +145,27 @@ namespace XLabs.Forms.Controls
 
         #endregion
 
+        #region ItemSpacing property
+
+        public static readonly BindableProperty ItemSpacingProperty = BindableProperty.Create(nameof(ItemSpacing),
+            typeof(double), typeof(WrapGrid), 5.0, propertyChanged: OnItemSpacingChanged);
+
+        public double ItemSpacing
+        {
+            get => (double)GetValue(ItemSpacingProperty);
+            set => SetValue(ItemSpacingProperty, value);
+        }
+
+        private static void OnItemSpacingChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if (bindable is WrapGrid view)
+            {
+                view._layout.Spacing = (double)newvalue;
+            }
+        }
+
+        #endregion
+
         /// <summary>
         /// The items source property
         /// </summary>

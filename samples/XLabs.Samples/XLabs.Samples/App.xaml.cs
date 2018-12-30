@@ -54,12 +54,12 @@ namespace XLabs.Samples
             Init();
             MainPage = GetMainPage();
         }
+
         /// <summary>
         /// Initializes the application.
         /// </summary>
         public static void Init()
         {
-
             var app = Resolver.Resolve<IXFormsApp>();
             if (app == null)
             {
@@ -269,11 +269,12 @@ namespace XLabs.Samples
                 {"WebImage", typeof(WebImagePage)},
                 {"IconLabel", typeof(IconLabelPage)},
                 {"IconButton", typeof(IconButtonPage)},
+                {"WrapLayout", typeof(WrapLayoutPage)}
             };
 
             // This is actually a lot of work just to enable something
             // for iOS only, but oh well.
-            if (Device.OS == TargetPlatform.iOS)
+            if (Device.RuntimePlatform == Device.iOS)
             {
                 listItems.Add("SegmentedControlView", typeof(SegmentedControlViewPage));
             }
@@ -358,6 +359,9 @@ namespace XLabs.Samples
 
             listView.ItemSelected += async (sender, e) =>
             {
+                //Debug.WriteLine($"{e.SelectedItem} selected.");
+                //return;
+
                 if (e.SelectedItem == null)
                 {
                     return;
@@ -377,7 +381,7 @@ namespace XLabs.Samples
 
                 await ShowPage(mainPage, result);
 
-                ((ListView)sender).SelectedItem = null;
+                Device.BeginInvokeOnMainThread(() => ((ListView)sender).SelectedItem = null);
             };
 
             return listView;

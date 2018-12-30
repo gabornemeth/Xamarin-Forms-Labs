@@ -3,6 +3,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
   </ItemGroup>
@@ -13,6 +18,11 @@
     <ProjectReference Include="..\..\..\src\Forms\XLabs.Forms\XLabs.Forms.csproj" />
     <ProjectReference Include="..\..\..\src\IOC\XLabs.IOC\XLabs.IOC.csproj" />
     <ProjectReference Include="..\..\..\src\Platform\XLabs.Platform\XLabs.Platform.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\Controls\WrapLayoutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

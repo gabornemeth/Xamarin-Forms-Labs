@@ -4,7 +4,7 @@
 // Created          : 12-27-2015
 // 
 // Last Modified By : XLabs Team
-// Last Modified On : 01-04-2016
+// Last Modified On : 12-31-2018
 // ***********************************************************************
 // <copyright file="WrapLayout.cs" company="XLabs Team">
 //     Copyright (c) XLabs Team. All rights reserved.
@@ -36,8 +36,8 @@ namespace XLabs.Forms.Controls
         /// Backing Storage for the Orientation property
         /// </summary>
         public static readonly BindableProperty OrientationProperty =
-            BindableProperty.Create<WrapLayout, StackOrientation>(w => w.Orientation, StackOrientation.Vertical,
-                propertyChanged: (bindable, oldvalue, newvalue) => ((WrapLayout)bindable).OnSizeChanged());
+            BindableProperty.Create(nameof(Orientation), typeof(StackOrientation), typeof(WrapLayout), StackOrientation.Vertical,
+                propertyChanged: (bindable, oldvalue, newvalue) => ((WrapLayout)bindable).InvalidateMeasure());
 
         /// <summary>
         /// Orientation (Horizontal or Vertical)
@@ -51,9 +51,8 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// Backing Storage for the Spacing property
         /// </summary>
-        public static readonly BindableProperty SpacingProperty =
-            BindableProperty.Create<WrapLayout, double>(w => w.Spacing, 6,
-                propertyChanged: (bindable, oldvalue, newvalue) => ((WrapLayout)bindable).OnSizeChanged());
+        public static readonly BindableProperty SpacingProperty = BindableProperty.Create(
+            nameof(Spacing), typeof(double), typeof(WrapLayout), 6.0, propertyChanged: OnSpacingChanged);
 
         /// <summary>
         /// Spacing added between elements (both directions)
@@ -65,25 +64,13 @@ namespace XLabs.Forms.Controls
             set { SetValue(SpacingProperty, value); }
         }
 
-        /// <summary>
-        /// This is called when the spacing or orientation properties are changed - it forces
-        /// the control to go back through a layout pass.
-        /// </summary>
-        private void OnSizeChanged()
+        static void OnSpacingChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ForceLayout();
+            if (bindable is WrapLayout view)
+            {
+                view.InvalidateMeasure();
+            }
         }
-
-        //http://forums.xamarin.com/discussion/17961/stacklayout-with-horizontal-orientation-how-to-wrap-vertically#latest
-        //		protected override void OnPropertyChanged
-        //		(string propertyName = null)
-        //		{
-        //			base.OnPropertyChanged(propertyName);
-        //			if ((propertyName == WrapLayout.OrientationProperty.PropertyName) ||
-        //				(propertyName == WrapLayout.SpacingProperty.PropertyName)) {
-        //				this.OnSizeChanged();
-        //			}
-        //		}
 
         /// <summary>
         /// This method is called during the measure pass of a layout cycle to get the desired size of an element.
@@ -104,7 +91,7 @@ namespace XLabs.Forms.Controls
 
             var internalWidth = double.IsPositiveInfinity(widthConstraint) ? double.PositiveInfinity : Math.Max(0, widthConstraint);
             var internalHeight = double.IsPositiveInfinity(heightConstraint) ? double.PositiveInfinity : Math.Max(0, heightConstraint);
-            
+
             return Orientation == StackOrientation.Vertical
                 ? DoVerticalMeasure(internalWidth, internalHeight)
                     : DoHorizontalMeasure(internalWidth, internalHeight);
@@ -126,7 +113,7 @@ namespace XLabs.Forms.Controls
             double minHeight = 0;
             double heightUsed = 0;
 
-            foreach (var size in Children.Where(c => c.IsVisible).Select(item => item.GetSizeRequest(widthConstraint, heightConstraint)))
+            foreach (var size in Children.Where(c => c.IsVisible).Select(item => item.Measure(widthConstraint, heightConstraint)))
             {
                 width = Math.Max(width, size.Request.Width);
 
@@ -203,7 +190,7 @@ namespace XLabs.Forms.Controls
             }
 
             width = Math.Max(width, widthUsed);
-            height = (height + Spacing)*rowCount;   // - Spacing;
+            height = (height + Spacing) * rowCount;   // - Spacing;
             //height *= rowCount;  // take max height
 
             return new SizeRequest(new Size(width, height), new Size(minWidth, minHeight));

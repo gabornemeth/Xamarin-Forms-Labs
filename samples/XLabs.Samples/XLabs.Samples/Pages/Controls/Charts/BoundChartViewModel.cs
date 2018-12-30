@@ -108,7 +108,7 @@ namespace XLabs.Samples.Pages.Controls.Charts
 		/// <returns>List&lt;List&lt;Tuple&lt;System.String, System.Double&gt;&gt;&gt;.</returns>
 		private List<List<Tuple<string, double>>> GetChartData()
 		{
-			Random rnd = new Random();
+			var rnd = new System.Random();
 
 			var seriesValues1 = new List<Tuple<string, double>>()
 			{
