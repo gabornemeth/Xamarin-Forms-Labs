@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Platform</id>
-    <version>3.0.0-pre02</version>
+    <version>3.0.0-pre03</version>
     <title>XLabs - Platform</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,15 +17,15 @@
     <tags>Xamarin XLabs</tags>
     <dependencies>
       <group targetFramework="netstandard2.0">
-        <dependency id="XLabs.IoC" version="3.0.0-pre02" />
-        <dependency id="XLabs.Core" version="3.0.0-pre02" />
-        <dependency id="XLabs.Serialization" version="3.0.0-pre02" />
+        <dependency id="XLabs.IoC" version="3.0.0-pre03" />
+        <dependency id="XLabs.Core" version="3.0.0-pre03" />
+        <dependency id="XLabs.Serialization" version="3.0.0-pre03" />
         <dependency id="ExifLib.Standard" version="1.7.0" />
       </group>
       <group targetFramework="uap">
-        <dependency id="XLabs.IoC" version="3.0.0-pre02" />
-        <dependency id="XLabs.Core" version="3.0.0-pre02" />
-        <dependency id="XLabs.Serialization" version="3.0.0-pre02" />
+        <dependency id="XLabs.IoC" version="3.0.0-pre03" />
+        <dependency id="XLabs.Core" version="3.0.0-pre03" />
+        <dependency id="XLabs.Serialization" version="3.0.0-pre03" />
         <dependency id="SharpDX.Direct2D1" version="3.0.2" />
         <dependency id="SharpDX" version="3.0.2" />
         <dependency id="SharpDX.DXGI" version="3.0.2" />

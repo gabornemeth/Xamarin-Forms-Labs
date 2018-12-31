@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Forms.Charting</id>
-    <version>3.0.0-pre02</version>
+    <version>3.0.0-pre03</version>
     <title>XLabs - Forms - Charting</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,7 +17,7 @@
     <tags>Xamarin XLabs Forms Charting</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Forms" version="3.0.0-pre02" />
+        <dependency id="XLabs.Forms" version="3.0.0-pre03" />
         <dependency id="Xamarin.Forms" version="3.0.0.446417" />
       </group>
     </dependencies>

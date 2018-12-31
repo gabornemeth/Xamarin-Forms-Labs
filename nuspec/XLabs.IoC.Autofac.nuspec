@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC.Autofac</id>
-    <version>3.0.0-pre02</version>
+    <version>3.0.0-pre03</version>
     <title>XLabs - IoC - Autofac</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,7 +16,7 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC Autofac</tags>
     <dependencies>
-      <dependency id="XLabs.IoC" version="3.0.0-pre02" />
+      <dependency id="XLabs.IoC" version="3.0.0-pre03" />
       <dependency id="Autofac" version="4.1.1" />
     </dependencies>
   </metadata>

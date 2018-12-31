@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC.Unity</id>
-    <version>3.0.0-pre02</version>
+    <version>3.0.0-pre03</version>
     <title>XLabs - IoC - Unity</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,7 +17,7 @@
     <tags>Xamarin XLabs IOC</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.IoC" version="3.0.0-pre02" />
+        <dependency id="XLabs.IoC" version="3.0.0-pre03" />
         <dependency id="Unity" version="5.8.6" />
       </group>
     </dependencies>

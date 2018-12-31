@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Serialization.ProtoBuf</id>
-    <version>3.0.0-pre02</version>
+    <version>3.0.0-pre03</version>
     <title>XLabs - Serialization - ProtoBuf</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,7 +16,7 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Serialization ProtoBuf</tags>
     <dependencies>
-      <dependency id="XLabs.Serialization" version="3.0.0-pre02" />
+      <dependency id="XLabs.Serialization" version="3.0.0-pre03" />
       <dependency id="protobuf-net" version="2.4.0" />
     </dependencies>
   </metadata>

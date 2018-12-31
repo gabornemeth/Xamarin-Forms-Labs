@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Serialization.JSON</id>
-    <version>3.0.0-pre02</version>
+    <version>3.0.0-pre03</version>
     <title>XLabs - Serialization - JSON</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,7 +17,7 @@
     <tags>Xamarin XLabs Serialization json json.net</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Serialization" version="3.0.0-pre02" />
+        <dependency id="XLabs.Serialization" version="3.0.0-pre03" />
         <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
     </dependencies>
